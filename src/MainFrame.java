@@ -48,7 +48,7 @@ public class MainFrame extends JFrame implements ActionListener {
     public MainFrame() {
         textArea = new JTextArea("Open a file to view its contents.");
         textArea.setBackground(lightSecondaryBackgroundColour);
-        textArea.setFont(new Font("Times New Roman", Font.PLAIN, 13));
+        textArea.setFont(new Font("Monospaced", Font.PLAIN, 13));
         textArea.setEditable(false);
 
         scrollPane = new JScrollPane(textArea);
