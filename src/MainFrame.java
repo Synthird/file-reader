@@ -65,7 +65,7 @@ public class MainFrame extends JFrame implements ActionListener {
         this.add(buttonPanel, BorderLayout.SOUTH);
 
         openFile = setUpButton("Open file");
-        copyButton = setUpButton("Copy whole text");
+        copyButton = setUpButton("Copy entire text");
 
         darkLightModeButton = new JButton("Toggle dark mode");
         darkLightModeButton.setFocusable(false);
