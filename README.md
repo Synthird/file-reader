@@ -1,6 +1,6 @@
 # File reader
 
-A GUI that reads the contents/text of files.
+A GUI that reads the contents/text of a file.
 
 [![Screenshot](https://github.com/user-attachments/assets/ca6d6935-8084-4ee2-9e75-a3291b894843)](#)
 
