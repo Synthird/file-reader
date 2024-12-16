@@ -4,7 +4,7 @@ A GUI that reads the contents/text of files.
 
 ## Download/Installation
 
-You can download a version in the [releases page](https://github.com/Synthird/Textfield-resizes-window/releases).
+You can download a version in the [releases page](https://github.com/Synthird/File-reader/releases).
 
 ### Opening the exe in the zip folder (Windows only)
 
