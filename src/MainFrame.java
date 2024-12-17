@@ -92,19 +92,18 @@ public class MainFrame extends JFrame implements ActionListener {
 
                 try {
                     scanner = new Scanner(new FileInputStream(file));
-                } catch (FileNotFoundException fileNotFoundException) {
-                    showErrorDialog(OpenContext.NO_FILE_FOUND);
+                } catch (FileNotFoundException | SecurityException exception) {
+                    showErrorDialog();
                 } finally {
-                    if (file.canRead()) {
+                    if (scanner != null) {
                         textArea.setText("");
 
                         while (scanner.hasNextLine()) {
                             textArea.append(String.format("%s \n", scanner.nextLine()));
                         }
-
+    
                         scanner.close();
-                    } else {
-                        showErrorDialog(OpenContext.CANNOT_READ);
+                        scanner = null;
                     }
                 }
             }
@@ -142,12 +141,8 @@ public class MainFrame extends JFrame implements ActionListener {
         }
     }
 
-    private void showErrorDialog(OpenContext context) {
-        if (context == OpenContext.CANNOT_READ) {
-            JOptionPane.showMessageDialog(null, "Unable to read file!", "CANNOT READ FILE!", JOptionPane.ERROR_MESSAGE);
-        } else if (context == OpenContext.NO_FILE_FOUND) {
-            JOptionPane.showMessageDialog(null, "Unable to find file!", "FILE NOT FOUND!", JOptionPane.ERROR_MESSAGE);
-        }
+    private void showErrorDialog() {
+        JOptionPane.showMessageDialog(null, "Either the file cannot be read or found..", "Unable to read!", JOptionPane.ERROR_MESSAGE);
     }
 
     private JButton setUpButton(String buttonText) {
