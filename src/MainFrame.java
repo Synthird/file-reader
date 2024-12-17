@@ -32,6 +32,7 @@ public class MainFrame extends JFrame implements ActionListener {
     JPanel buttonPanel;
     JButton openFile;
     JButton copyButton;
+    JButton clearButton;
     JButton darkLightModeButton;
 
     Boolean darkMode = false;
@@ -66,11 +67,8 @@ public class MainFrame extends JFrame implements ActionListener {
 
         openFile = setUpButton("Open file");
         copyButton = setUpButton("Copy entire text");
-
-        darkLightModeButton = new JButton("Toggle dark mode");
-        darkLightModeButton.setFocusable(false);
-        darkLightModeButton.addActionListener(this);
-        buttonPanel.add(darkLightModeButton);
+        clearButton = setUpButton("Clear text");
+        darkLightModeButton = setUpButton("Toggle dark mode");
 
         this.setTitle("File reader");
         this.setSize(512, 400);
@@ -139,6 +137,8 @@ public class MainFrame extends JFrame implements ActionListener {
         } else if (e.getSource() == copyButton) {
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(textArea.getText()), null);
             JOptionPane.showMessageDialog(null, "Text has been copied!", "Text now copied", JOptionPane.PLAIN_MESSAGE);
+        } else if (e.getSource() == clearButton) {
+            textArea.setText("");
         }
     }
 
