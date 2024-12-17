@@ -93,7 +93,8 @@ public class MainFrame extends JFrame implements ActionListener {
                 try {
                     scanner = new Scanner(new FileInputStream(file));
                 } catch (FileNotFoundException | SecurityException exception) {
-                    showErrorDialog();
+                    JOptionPane.showMessageDialog(null, "Either the file cannot be read or found....",
+                            "Unable to read!", JOptionPane.ERROR_MESSAGE);
                 } finally {
                     if (scanner != null) {
                         textArea.setText("");
@@ -101,7 +102,7 @@ public class MainFrame extends JFrame implements ActionListener {
                         while (scanner.hasNextLine()) {
                             textArea.append(String.format("%s \n", scanner.nextLine()));
                         }
-    
+
                         scanner.close();
                         scanner = null;
                     }
@@ -139,10 +140,6 @@ public class MainFrame extends JFrame implements ActionListener {
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(textArea.getText()), null);
             JOptionPane.showMessageDialog(null, "Text has been copied!", "Text now copied", JOptionPane.PLAIN_MESSAGE);
         }
-    }
-
-    private void showErrorDialog() {
-        JOptionPane.showMessageDialog(null, "Either the file cannot be read or found..", "Unable to read!", JOptionPane.ERROR_MESSAGE);
     }
 
     private JButton setUpButton(String buttonText) {
