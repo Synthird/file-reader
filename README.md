@@ -11,7 +11,7 @@ You can download a version in the [releases page](https://github.com/Synthird/Fi
 
 ### Opening the exe in the zip folder (Windows only)
 
-1. Download and unzip the zip folder
+1. Download and unzip the zip folder called "File-reader.zip"
 3. Open the exe file
 4. If you get a pop-up saying the exe might be a virus
     - Click "More info"
