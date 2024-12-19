@@ -2,7 +2,8 @@
 
 A GUI window that reads the contents/text of any file.
 
-[![File reader window](https://github.com/user-attachments/assets/ca6d6935-8084-4ee2-9e75-a3291b894843)](#)
+[![New file reader screenshot](https://github.com/user-attachments/assets/77ef4191-c3bb-4128-8407-52ed8264c17f)](#)
+
 
 ## Download/Installation
 
@@ -10,7 +11,7 @@ You can download a version in the [releases page](https://github.com/Synthird/Fi
 
 ### Opening the exe in the zip folder (Windows only)
 
-1. Download and unzip the zip folder
+1. Download and unzip the zip folder called "File-reader.zip"
 3. Open the exe file
 4. If you get a pop-up saying the exe might be a virus
     - Click "More info"
