@@ -138,7 +138,7 @@ public class MainFrame extends JFrame implements ActionListener {
             }
         } else if (e.getSource() == copyButton) {
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(textArea.getText()), null);
-            JOptionPane.showMessageDialog(null, "Text has been copied!", "Text now copied", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Text copied to clipboard!", "Text copied!", JOptionPane.PLAIN_MESSAGE);
         } else if (e.getSource() == clearButton) {
             textArea.setText("");
         }
