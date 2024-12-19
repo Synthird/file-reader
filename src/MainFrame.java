@@ -102,7 +102,6 @@ public class MainFrame extends JFrame implements ActionListener {
                         }
 
                         textArea.setCaretPosition(0);
-
                         scanner.close();
                         scanner = null;
                     }
