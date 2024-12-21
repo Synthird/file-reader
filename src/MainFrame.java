@@ -50,6 +50,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	Color whiteText = new Color(215, 215, 215);
 
 	public MainFrame() {
+		// Textbox/textfield
 		textArea = new JTextArea("Open a file to view its contents.");
 		textArea.setBackground(lightSecondaryBackgroundColour);
 		textArea.setFont(new Font("Monospaced", Font.PLAIN, 13));
@@ -63,7 +64,6 @@ public class MainFrame extends JFrame implements ActionListener {
 		this.add(scrollPane, BorderLayout.CENTER);
 
 		// Buttons
-
 		buttonPanel = new JPanel();
 		buttonPanel.setOpaque(false);
 		this.add(buttonPanel, BorderLayout.SOUTH);
@@ -73,6 +73,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		clearButton = setUpButton("Clear text");
 		darkLightModeButton = setUpButton("Toggle dark mode");
 
+		// Window setup
 		this.setTitle("File reader");
 		this.setSize(512, 400);
 		this.setLocationRelativeTo(null);
