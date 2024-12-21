@@ -37,13 +37,16 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	Boolean darkMode = false;
 
+	// Dark mode colours
 	Color darkBackgroundColour = new Color(40, 40, 40);
 	Color darkSecondaryBackgroundColour = new Color(30, 30, 30);
 
+	Color blackText = new Color(51, 51, 51);
+
+	// Light mode colours
 	Color lightBackgroundColour = this.getContentPane().getBackground();
 	Color lightSecondaryBackgroundColour = new Color(243, 243, 243);
 
-	Color blackText = new Color(51, 51, 51);
 	Color whiteText = new Color(215, 215, 215);
 
 	public MainFrame() {
