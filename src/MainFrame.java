@@ -36,12 +36,11 @@ public class MainFrame extends JFrame implements ActionListener {
 	JButton darkLightModeButton;
 
 	Boolean darkMode = false;
+	Color blackText = new Color(51, 51, 51);
 
 	// Dark mode colours
 	Color darkBackgroundColour = new Color(40, 40, 40);
 	Color darkSecondaryBackgroundColour = new Color(30, 30, 30);
-
-	Color blackText = new Color(51, 51, 51);
 
 	// Light mode colours
 	Color lightBackgroundColour = this.getContentPane().getBackground();
