@@ -40,7 +40,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	// Dark mode colours
 	Color darkBackgroundColour = new Color(40, 40, 40);
 	Color darkSecondaryBackgroundColour = new Color(30, 30, 30);
-	
+
 	Color whiteText = new Color(215, 215, 215);
 
 	// Light mode colours
@@ -116,28 +116,10 @@ public class MainFrame extends JFrame implements ActionListener {
 
 			if (darkMode) {
 				darkLightModeButton.setText("Toggle light mode");
-				this.getContentPane().setBackground(darkBackgroundColour);
-				verticalScrollBar.setBackground(darkBackgroundColour);
-				horizontalScrollBar.setBackground(darkBackgroundColour);
-				textArea.setBackground(darkSecondaryBackgroundColour);
-				textArea.setForeground(whiteText);
-				textArea.setCaretColor(whiteText);
-				for (Component component : buttonPanel.getComponents()) {
-					component.setBackground(darkBackgroundColour);
-					component.setForeground(whiteText);
-				}
+				setUpTheme(darkBackgroundColour, darkSecondaryBackgroundColour, whiteText);
 			} else {
 				darkLightModeButton.setText("Toggle dark mode");
-				this.getContentPane().setBackground(lightBackgroundColour);
-				verticalScrollBar.setBackground(lightBackgroundColour);
-				horizontalScrollBar.setBackground(lightBackgroundColour);
-				textArea.setBackground(lightSecondaryBackgroundColour);
-				textArea.setForeground(blackText);
-				textArea.setCaretColor(blackText);
-				for (Component component : buttonPanel.getComponents()) {
-					component.setBackground(lightBackgroundColour);
-					component.setForeground(blackText);
-				}
+				setUpTheme(lightBackgroundColour, lightSecondaryBackgroundColour, blackText);
 			}
 		} else if (e.getSource() == copyButton) {
 			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(textArea.getText()), null);
@@ -147,11 +129,26 @@ public class MainFrame extends JFrame implements ActionListener {
 		}
 	}
 
+	// GUI setup
+
 	private JButton setUpButton(String buttonText) {
 		JButton button = new JButton(buttonText);
 		button.setFocusable(false);
 		button.addActionListener(this);
 		buttonPanel.add(button);
 		return button;
+	}
+
+	private void setUpTheme(Color backgroundColour, Color secondaryBackgroundColour, Color textColour) {
+		this.getContentPane().setBackground(backgroundColour);
+		verticalScrollBar.setBackground(backgroundColour);
+		horizontalScrollBar.setBackground(backgroundColour);
+		textArea.setBackground(secondaryBackgroundColour);
+		textArea.setForeground(textColour);
+		textArea.setCaretColor(textColour);
+		for (Component component : buttonPanel.getComponents()) {
+			component.setBackground(backgroundColour);
+			component.setForeground(textColour);
+		}
 	}
 }
