@@ -29,7 +29,7 @@ You need an openJDK to open the jar file. Here are a couple ones to choose:
 - [IBM Semeru Runtimes](https://developer.ibm.com/languages/java/semeru-runtimes/)
 - [Microsoft's openJDK](https://www.microsoft.com/openjdk)
 - [Oracle GraalVM](https://www.graalvm.org/downloads/)
-- [Oracle Java SE](https://www.graalvm.org/downloads/)
+- [Oracle Java SE](https://www.oracle.com/java/technologies/downloads/)
 - [Red Hat's openJDK](https://developers.redhat.com/products/openjdk/download)
 - [SapMachine](https://sap.github.io/SapMachine/)
 
