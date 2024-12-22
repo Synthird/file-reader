@@ -36,17 +36,18 @@ public class MainFrame extends JFrame implements ActionListener {
 	JButton darkLightModeButton;
 
 	Boolean darkMode = false;
-	Color blackText = new Color(51, 51, 51);
 
 	// Dark mode colours
 	Color darkBackgroundColour = new Color(40, 40, 40);
 	Color darkSecondaryBackgroundColour = new Color(30, 30, 30);
+	
+	Color whiteText = new Color(215, 215, 215);
 
 	// Light mode colours
 	Color lightBackgroundColour = this.getContentPane().getBackground();
 	Color lightSecondaryBackgroundColour = new Color(243, 243, 243);
 
-	Color whiteText = new Color(215, 215, 215);
+	Color blackText = new Color(51, 51, 51);
 
 	public MainFrame() {
 		// Textbox/textfield
