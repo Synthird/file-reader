@@ -33,7 +33,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	JButton openFile;
 	JButton copyButton;
 	JButton clearButton;
-	JButton darkLightModeButton;
+	JButton changeThemeButton;
 
 	Boolean darkMode = false;
 
@@ -71,7 +71,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		openFile = setUpButton("Open file");
 		copyButton = setUpButton("Copy entire text");
 		clearButton = setUpButton("Clear text");
-		darkLightModeButton = setUpButton("Toggle dark mode");
+		changeThemeButton = setUpButton("Toggle dark mode");
 
 		// Window setup
 		this.setTitle("File reader");
@@ -111,15 +111,13 @@ public class MainFrame extends JFrame implements ActionListener {
 					}
 				}
 			}
-		} else if (e.getSource() == darkLightModeButton) {
+		} else if (e.getSource() == changeThemeButton) {
 			darkMode = !darkMode;
 
 			if (darkMode) {
-				darkLightModeButton.setText("Toggle light mode");
-				setUpTheme(darkBackgroundColour, darkSecondaryBackgroundColour, whiteText);
+				setUpTheme(darkBackgroundColour, darkSecondaryBackgroundColour, whiteText, "light");
 			} else {
-				darkLightModeButton.setText("Toggle dark mode");
-				setUpTheme(lightBackgroundColour, lightSecondaryBackgroundColour, blackText);
+				setUpTheme(lightBackgroundColour, lightSecondaryBackgroundColour, blackText, "dark");
 			}
 		} else if (e.getSource() == copyButton) {
 			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(textArea.getText()), null);
@@ -139,11 +137,12 @@ public class MainFrame extends JFrame implements ActionListener {
 		return button;
 	}
 
-	private void setUpTheme(Color backgroundColour, Color secondaryBackgroundColour, Color textColour) {
+	private void setUpTheme(Color backgroundColour, Color textBackgroundColour, Color textColour, String themeName) {
+		changeThemeButton.setText(String.format("Toggle %s mode", themeName));
 		this.getContentPane().setBackground(backgroundColour);
 		verticalScrollBar.setBackground(backgroundColour);
 		horizontalScrollBar.setBackground(backgroundColour);
-		textArea.setBackground(secondaryBackgroundColour);
+		textArea.setBackground(textBackgroundColour);
 		textArea.setForeground(textColour);
 		textArea.setCaretColor(textColour);
 		for (Component component : buttonPanel.getComponents()) {
