@@ -35,6 +35,6 @@ You need an openJDK to open the jar file. Here are a couple ones to choose:
 
 Once you installed an openJDK, download the jar file and open it.
 
-# License
+## License
 
 This repository contains the MIT license. You must give credit if you are going to use its source code.
