@@ -2,7 +2,7 @@
 
 A GUI window that reads the contents/text of any file.
 
-[![New file reader screenshot](https://github.com/user-attachments/assets/77ef4191-c3bb-4128-8407-52ed8264c17f)](#)
+![New file reader screenshot](https://github.com/user-attachments/assets/77ef4191-c3bb-4128-8407-52ed8264c17f)
 
 
 ## Download/Installation
