@@ -102,7 +102,7 @@ public class MainFrame extends JFrame implements ActionListener {
 						textArea.setText("");
 
 						while (scanner.hasNextLine()) {
-							textArea.append(String.format("%s \n", scanner.nextLine()));
+							textArea.append(String.format("%s\n", scanner.nextLine()));
 						}
 
 						textArea.setCaretPosition(0);
