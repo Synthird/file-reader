@@ -54,7 +54,6 @@ public class MainFrame extends JFrame implements ActionListener {
 		// Textbox/textfield
 		textArea = new JTextArea("Open a file to view its contents.");
 		textArea.setCursor(new Cursor(Cursor.TEXT_CURSOR));
-		textArea.setBackground(lightSecondaryBackgroundColour);
 		textArea.setFont(new Font("Monospaced", Font.PLAIN, 13));
 		textArea.setEditable(false);
 
