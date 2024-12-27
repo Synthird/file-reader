@@ -143,11 +143,14 @@ public class MainFrame extends JFrame implements ActionListener {
 	private void setUpTheme(Color backgroundColour, Color textBackgroundColour, Color textColour, String themeName) {
 		changeThemeButton.setText(String.format("Toggle %s mode", themeName));
 		this.getContentPane().setBackground(backgroundColour);
+		// Changing the scrollbar colours
 		verticalScrollBar.setBackground(backgroundColour);
 		horizontalScrollBar.setBackground(backgroundColour);
+		// Changing the textbox's colours
 		textArea.setBackground(textBackgroundColour);
 		textArea.setForeground(textColour);
 		textArea.setCaretColor(textColour);
+		// Changing the colours of the buttons
 		for (Component component : buttonPanel.getComponents()) {
 			component.setBackground(backgroundColour);
 			component.setForeground(textColour);
