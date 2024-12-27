@@ -100,6 +100,8 @@ public class MainFrame extends JFrame implements ActionListener {
 					JOptionPane.showMessageDialog(this, "The file cannot be read or found....", "Unable to read!",
 							JOptionPane.ERROR_MESSAGE);
 				} finally {
+					textArea.setText("");
+
 					if (scanner != null) {
 						while (scanner.hasNextLine()) {
 							textArea.append(String.format("%s\n", scanner.nextLine()));
