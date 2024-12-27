@@ -97,7 +97,7 @@ public class MainFrame extends JFrame implements ActionListener {
 				try {
 					scanner = new Scanner(new FileInputStream(file));
 				} catch (FileNotFoundException | SecurityException exception) {
-					JOptionPane.showMessageDialog(null, "Either the file cannot be read or found....",
+					JOptionPane.showMessageDialog(this, "Either the file cannot be read or found....",
 							"Unable to read!", JOptionPane.ERROR_MESSAGE);
 				} finally {
 					if (scanner != null) {
@@ -122,7 +122,7 @@ public class MainFrame extends JFrame implements ActionListener {
 			}
 		} else if (e.getSource() == copyButton) {
 			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(textArea.getText()), null);
-			JOptionPane.showMessageDialog(null, "Text copied to clipboard!", "Text copied!",
+			JOptionPane.showMessageDialog(this, "Text copied to clipboard!", "Text copied!",
 					JOptionPane.INFORMATION_MESSAGE);
 		} else if (e.getSource() == clearButton) {
 			textArea.setText("");
