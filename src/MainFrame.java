@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
@@ -52,6 +53,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	public MainFrame() {
 		// Textbox/textfield
 		textArea = new JTextArea("Open a file to view its contents.");
+		textArea.setCursor(new Cursor(Cursor.TEXT_CURSOR));
 		textArea.setBackground(lightSecondaryBackgroundColour);
 		textArea.setFont(new Font("Monospaced", Font.PLAIN, 13));
 		textArea.setEditable(false);
