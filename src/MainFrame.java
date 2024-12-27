@@ -75,7 +75,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		changeThemeButton = setUpButton("Toggle dark mode");
 
 		// Window setup
-		this.setTitle("File reader");
+		setWindowTitleToDefaultTitle();
 		this.setSize(512, 400);
 		this.setLocationRelativeTo(null);
 		this.setMinimumSize(this.getSize());
@@ -91,7 +91,8 @@ public class MainFrame extends JFrame implements ActionListener {
 			int fileChosen = fileChooser.showOpenDialog(this);
 
 			if (fileChosen == JFileChooser.APPROVE_OPTION) {
-				File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
+				String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+				File file = new File(filePath);
 
 				try {
 					scanner = new Scanner(new FileInputStream(file));
@@ -105,6 +106,7 @@ public class MainFrame extends JFrame implements ActionListener {
 						}
 
 						textArea.setCaretPosition(0);
+						this.setTitle(filePath);
 						scanner.close();
 						scanner = null;
 					}
@@ -124,6 +126,7 @@ public class MainFrame extends JFrame implements ActionListener {
 					JOptionPane.INFORMATION_MESSAGE);
 		} else if (e.getSource() == clearButton) {
 			textArea.setText("");
+			setWindowTitleToDefaultTitle();
 		}
 	}
 
@@ -152,5 +155,9 @@ public class MainFrame extends JFrame implements ActionListener {
 			component.setBackground(backgroundColour);
 			component.setForeground(textColour);
 		}
+	}
+
+	private void setWindowTitleToDefaultTitle() {
+		this.setTitle("File reader");
 	}
 }
