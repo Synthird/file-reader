@@ -106,7 +106,7 @@ public class MainFrame extends JFrame implements ActionListener {
 						}
 
 						textArea.setCaretPosition(0);
-						this.setTitle(filePath);
+						this.setTitle(String.format("File reader (%s)", filePath));
 						scanner.close();
 						scanner = null;
 					}
