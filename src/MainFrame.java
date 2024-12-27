@@ -100,8 +100,6 @@ public class MainFrame extends JFrame implements ActionListener {
 							"Unable to read!", JOptionPane.ERROR_MESSAGE);
 				} finally {
 					if (scanner != null) {
-						textArea.setText("");
-
 						while (scanner.hasNextLine()) {
 							textArea.append(String.format("%s\n", scanner.nextLine()));
 						}
