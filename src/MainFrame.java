@@ -75,7 +75,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		changeThemeButton = setUpButton("Toggle dark mode");
 
 		// Window setup
-		setWindowTitleToDefaultTitle();
+		setWindowTitle();
 		this.setSize(512, 400);
 		this.setLocationRelativeTo(null);
 		this.setMinimumSize(this.getSize());
@@ -118,9 +118,9 @@ public class MainFrame extends JFrame implements ActionListener {
 			darkMode = !darkMode;
 
 			if (darkMode) {
-				setUpTheme(darkBackgroundColour, darkSecondaryBackgroundColour, whiteText, "light");
+				setTheme(darkBackgroundColour, darkSecondaryBackgroundColour, whiteText, "light");
 			} else {
-				setUpTheme(lightBackgroundColour, lightSecondaryBackgroundColour, blackText, "dark");
+				setTheme(lightBackgroundColour, lightSecondaryBackgroundColour, blackText, "dark");
 			}
 		} else if (e.getSource() == copyButton) {
 			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(textArea.getText()), null);
@@ -128,7 +128,7 @@ public class MainFrame extends JFrame implements ActionListener {
 					JOptionPane.INFORMATION_MESSAGE);
 		} else if (e.getSource() == clearButton) {
 			textArea.setText("");
-			setWindowTitleToDefaultTitle();
+			setWindowTitle();
 		}
 	}
 
@@ -142,7 +142,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		return button;
 	}
 
-	private void setUpTheme(Color backgroundColour, Color textBackgroundColour, Color textColour, String themeName) {
+	private void setTheme(Color backgroundColour, Color textBackgroundColour, Color textColour, String themeName) {
 		changeThemeButton.setText(String.format("Toggle %s mode", themeName));
 		this.getContentPane().setBackground(backgroundColour);
 		// Changing the scrollbar colours
@@ -159,7 +159,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		}
 	}
 
-	private void setWindowTitleToDefaultTitle() {
+	private void setWindowTitle() {
 		this.setTitle("File reader");
 	}
 }
