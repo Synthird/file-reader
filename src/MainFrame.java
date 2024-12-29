@@ -97,7 +97,7 @@ public class MainFrame extends JFrame implements ActionListener {
 				try {
 					scanner = new Scanner(new FileInputStream(file));
 				} catch (FileNotFoundException | SecurityException exception) {
-					JOptionPane.showMessageDialog(this, "The file cannot be read or found....", "Unable to read!",
+					JOptionPane.showMessageDialog(this, "This file cannot be read or found....", "Unable to read!",
 							JOptionPane.ERROR_MESSAGE);
 				} finally {
 					if (scanner != null) {
