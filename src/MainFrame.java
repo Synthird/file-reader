@@ -23,6 +23,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class MainFrame extends JFrame implements ActionListener {
+	String defaultTitle = "File reader";
+
 	Scanner scanner;
 
 	JScrollPane scrollPane;
@@ -75,7 +77,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		changeThemeButton = setUpButton("Toggle dark mode");
 
 		// Window setup
-		setWindowTitle();
+		setWindowTitle(defaultTitle);
 		this.setSize(512, 400);
 		this.setLocationRelativeTo(null);
 		this.setMinimumSize(this.getSize());
@@ -108,7 +110,7 @@ public class MainFrame extends JFrame implements ActionListener {
 						}
 
 						textArea.setCaretPosition(0);
-						this.setTitle(String.format("File reader (%s)", filePath));
+						this.setTitle(String.format("%s (%s)", defaultTitle, filePath));
 						scanner.close();
 						scanner = null;
 					}
@@ -128,7 +130,7 @@ public class MainFrame extends JFrame implements ActionListener {
 					JOptionPane.INFORMATION_MESSAGE);
 		} else if (e.getSource() == clearButton) {
 			textArea.setText("");
-			setWindowTitle();
+			setWindowTitle(defaultTitle);
 		}
 	}
 
@@ -159,7 +161,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		}
 	}
 
-	private void setWindowTitle() {
-		this.setTitle("File reader");
+	private void setWindowTitle(String text) {
+		this.setTitle(text);
 	}
 }
