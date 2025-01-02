@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
@@ -10,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 import javax.swing.BorderFactory;
@@ -24,8 +26,10 @@ import javax.swing.JTextArea;
 
 public class MainFrame extends JFrame implements ActionListener {
 	String defaultTitle = "File reader";
+	Desktop desktop = Desktop.getDesktop();
 
 	Scanner scanner;
+	File currentFile;
 
 	JScrollPane scrollPane;
 	JScrollBar verticalScrollBar;
@@ -35,6 +39,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	JPanel buttonPanel;
 	JButton openFile;
 	JButton copyButton;
+	JButton openFileLocationButton;
 	JButton clearButton;
 	JButton findButton;
 	JButton changeThemeButton;
@@ -77,12 +82,13 @@ public class MainFrame extends JFrame implements ActionListener {
 		openFile = setUpButton("Open file");
 		findButton = setUpButton("Find text");
 		copyButton = setUpButton("Copy entire text");
+		openFileLocationButton = setUpButton("Open file location");
 		clearButton = setUpButton("Clear text");
 		changeThemeButton = setUpButton("Toggle dark mode");
 
 		// Window setup
 		setWindowTitle(defaultTitle);
-		this.setSize(570, 400);
+		this.setSize(705, 400);
 		this.setLocationRelativeTo(null);
 		this.setMinimumSize(this.getSize());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -98,10 +104,10 @@ public class MainFrame extends JFrame implements ActionListener {
 
 			if (fileChosen == JFileChooser.APPROVE_OPTION) {
 				String filePath = fileChooser.getSelectedFile().getAbsolutePath();
-				File file = new File(filePath);
+				currentFile = new File(filePath);
 
 				try {
-					scanner = new Scanner(new FileInputStream(file));
+					scanner = new Scanner(new FileInputStream(currentFile));
 				} catch (FileNotFoundException | SecurityException exception) {
 					JOptionPane.showMessageDialog(this, "This file cannot be read or found....", "Unable to read!",
 							JOptionPane.ERROR_MESSAGE);
@@ -138,6 +144,15 @@ public class MainFrame extends JFrame implements ActionListener {
 		} else if (e.getSource() == findButton) {
 			new FindText(textArea, findButton);
 			findButton.setEnabled(false);
+		} else if (e.getSource() == openFileLocationButton) {
+			if (currentFile != null) {
+				try {
+					desktop.open(currentFile.getParentFile());
+				} catch (IOException e1) {
+					JOptionPane.showMessageDialog(this, "Cannot open file location!", "Unable to open file explorer!",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}
 		}
 	}
 
