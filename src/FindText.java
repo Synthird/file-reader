@@ -31,9 +31,9 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 	JButton findButton;
 	JButton clearHighlights;
 
-	public FindText(JTextArea chosenTextArea, JButton openFindButton) {
+	public FindText(JTextArea chosenTextArea, JButton openFindGUI) {
 		textArea = chosenTextArea;
-		clickedButton = openFindButton;
+		clickedButton = openFindGUI;
 
 		highlighter = textArea.getHighlighter();
 
