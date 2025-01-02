@@ -22,7 +22,7 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 	JTextField textField;
 	JTextArea textAreaToFind;
 	Highlighter highlighter;
-	
+
 	JButton clickedFindButton;
 
 	DefaultHighlightPainter highlightColour = new DefaultHighlightPainter(Color.RED);
@@ -34,7 +34,7 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 	public FindText(JTextArea textArea, JButton openFindButton) {
 		textAreaToFind = textArea;
 		clickedFindButton = openFindButton;
-		
+
 		highlighter = textArea.getHighlighter();
 
 		textField = new JTextField();
@@ -62,21 +62,22 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == textField || e.getSource() == findButton) {
 			String fileText = textAreaToFind.getText();
-	
+
 			Pattern pattern = Pattern.compile(textField.getText());
 			Matcher matcher = pattern.matcher(fileText);
-	
+
 			highlighter.removeAllHighlights();
 
 			while (matcher.find()) {
 				try {
 					highlighter.addHighlight(matcher.start(), matcher.end(), highlightColour);
-				} catch (BadLocationException e1) {
-					JOptionPane.showMessageDialog(this, "Cannot find text!", "No text found!", JOptionPane.ERROR_MESSAGE);
+				} catch (BadLocationException locationException) {
+					JOptionPane.showMessageDialog(this, "Cannot find text!", "No text found!",
+							JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		} else if (e.getSource() == clearHighlighted) {
-			textAreaToFind.getHighlighter().removeAllHighlights();
+			highlighter.removeAllHighlights();
 		}
 	}
 
@@ -90,24 +91,31 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 
 	@Override
 	public void windowClosed(WindowEvent e) {
+		highlighter.removeAllHighlights();
 		clickedFindButton.setEnabled(true);
 	}
 
 	@Override
-	public void windowOpened(WindowEvent e) {}
+	public void windowOpened(WindowEvent e) {
+	}
 
 	@Override
-	public void windowClosing(WindowEvent e) {}
+	public void windowClosing(WindowEvent e) {
+	}
 
 	@Override
-	public void windowIconified(WindowEvent e) {}
+	public void windowIconified(WindowEvent e) {
+	}
 
 	@Override
-	public void windowDeiconified(WindowEvent e) {}
+	public void windowDeiconified(WindowEvent e) {
+	}
 
 	@Override
-	public void windowActivated(WindowEvent e) {}
+	public void windowActivated(WindowEvent e) {
+	}
 
 	@Override
-	public void windowDeactivated(WindowEvent e) {}
+	public void windowDeactivated(WindowEvent e) {
+	}
 }
