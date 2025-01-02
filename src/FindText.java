@@ -20,20 +20,18 @@ import javax.swing.text.Highlighter;
 
 public class FindText extends JFrame implements ActionListener, WindowListener {
 	JTextField textField;
-	JTextArea textAreaToFind;
+	JTextArea textArea;
 	Highlighter highlighter;
-
-	JButton clickedFindButton;
 
 	DefaultHighlightPainter highlightColour = new DefaultHighlightPainter(Color.RED);
 
 	JPanel buttonPanel;
 	JButton findButton;
-	JButton clearHighlighted;
+	JButton clearHighlights;
 
-	public FindText(JTextArea textArea, JButton openFindButton) {
-		textAreaToFind = textArea;
-		clickedFindButton = openFindButton;
+	public FindText(JTextArea chosenTextArea, JButton openFindButton) {
+		textArea = chosenTextArea;
+		findButton = openFindButton;
 
 		highlighter = textArea.getHighlighter();
 
@@ -47,7 +45,7 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 		this.add(buttonPanel, BorderLayout.SOUTH);
 
 		findButton = setUpButton("Find");
-		clearHighlighted = setUpButton("Clear highlighted");
+		clearHighlights = setUpButton("Clear highlighted");
 
 		this.setTitle("Find text (Case sensitive)");
 		this.setSize(324, 110);
@@ -62,7 +60,7 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == textField || e.getSource() == findButton) {
 			Pattern pattern = Pattern.compile(textField.getText());
-			Matcher matcher = pattern.matcher(textAreaToFind.getText());
+			Matcher matcher = pattern.matcher(textArea.getText());
 
 			highlighter.removeAllHighlights();
 
@@ -74,7 +72,7 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 							JOptionPane.ERROR_MESSAGE);
 				}
 			}
-		} else if (e.getSource() == clearHighlighted) {
+		} else if (e.getSource() == clearHighlights) {
 			highlighter.removeAllHighlights();
 		}
 	}
@@ -90,7 +88,7 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 	@Override
 	public void windowClosed(WindowEvent e) {
 		highlighter.removeAllHighlights();
-		clickedFindButton.setEnabled(true);
+		findButton.setEnabled(true);
 	}
 
 	@Override
