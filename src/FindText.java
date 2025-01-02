@@ -23,6 +23,8 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 	JTextArea textArea;
 	Highlighter highlighter;
 
+	JButton clickedButton;
+
 	DefaultHighlightPainter highlightColour = new DefaultHighlightPainter(Color.RED);
 
 	JPanel buttonPanel;
@@ -31,7 +33,7 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 
 	public FindText(JTextArea chosenTextArea, JButton openFindButton) {
 		textArea = chosenTextArea;
-		findButton = openFindButton;
+		clickedButton = openFindButton;
 
 		highlighter = textArea.getHighlighter();
 
@@ -88,7 +90,7 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 	@Override
 	public void windowClosed(WindowEvent e) {
 		highlighter.removeAllHighlights();
-		findButton.setEnabled(true);
+		clickedButton.setEnabled(true);
 	}
 
 	@Override
