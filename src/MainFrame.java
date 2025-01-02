@@ -193,7 +193,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	}
 
 	private void showCannotFindLocationDialog() {
-		showErrorDialog("Cannot open file location! It's either deleted or renamed.....",
+		showErrorDialog("Cannot open file location! It doesn't exist or it has been renamed.....",
 				"Unable to open file explorer!");
 	}
 }
