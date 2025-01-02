@@ -11,8 +11,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -23,9 +21,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.text.Highlighter;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DefaultHighlighter.DefaultHighlightPainter;
 
 public class MainFrame extends JFrame implements ActionListener {
 	String defaultTitle = "File reader";
@@ -44,7 +39,8 @@ public class MainFrame extends JFrame implements ActionListener {
 	JButton findButton;
 	JButton changeThemeButton;
 
-	Boolean darkMode = false;
+	Boolean darkMode;
+	Boolean findWindowOpened;
 
 	// Dark mode colours
 	Color darkBackgroundColour = new Color(40, 40, 40);
@@ -59,6 +55,9 @@ public class MainFrame extends JFrame implements ActionListener {
 	Color blackText = new Color(51, 51, 51);
 
 	public MainFrame() {
+		darkMode = false;
+		findWindowOpened = false;
+
 		// Textbox/textfield
 		textArea = new JTextArea("Open a file to view its contents.");
 		textArea.setCursor(new Cursor(Cursor.TEXT_CURSOR));
@@ -78,14 +77,14 @@ public class MainFrame extends JFrame implements ActionListener {
 		this.add(buttonPanel, BorderLayout.SOUTH);
 
 		openFile = setUpButton("Open file");
+		findButton = setUpButton("Find");
 		copyButton = setUpButton("Copy entire text");
 		clearButton = setUpButton("Clear text");
-		findButton = setUpButton("Find");
 		changeThemeButton = setUpButton("Toggle dark mode");
 
 		// Window setup
 		setWindowTitle(defaultTitle);
-		this.setSize(512, 400);
+		this.setSize(544, 400);
 		this.setLocationRelativeTo(null);
 		this.setMinimumSize(this.getSize());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -139,20 +138,8 @@ public class MainFrame extends JFrame implements ActionListener {
 			textArea.setText("");
 			setWindowTitle(defaultTitle);
 		} else if (e.getSource() == findButton) {
-			String wordToFind = JOptionPane.showInputDialog("Find a word");
-			String fileText = textArea.getText();
-			Highlighter highlighter = textArea.getHighlighter();
-
-			Pattern pattern = Pattern.compile(wordToFind);
-			Matcher matcher = pattern.matcher(fileText);
-
-			while (matcher.find()) {
-				try {
-					highlighter.addHighlight(matcher.start(), matcher.end(), new DefaultHighlightPainter(Color.RED));
-				} catch (BadLocationException e1) {
-					System.out.println("Bad location");
-				}
-			}
+			findButton.setEnabled(false);
+			new FindText(textArea, findButton);
 		}
 	}
 
