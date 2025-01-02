@@ -29,7 +29,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	Desktop desktop = Desktop.getDesktop();
 
 	Scanner scanner;
-	File currentFile;
+	File locationPath;
 
 	JScrollPane scrollPane;
 	JScrollBar verticalScrollBar;
@@ -80,9 +80,9 @@ public class MainFrame extends JFrame implements ActionListener {
 		this.add(buttonPanel, BorderLayout.SOUTH);
 
 		openFile = setUpButton("Open file");
+		openFileLocationButton = setUpButton("Open file location");
 		findButton = setUpButton("Find text");
 		copyButton = setUpButton("Copy entire text");
-		openFileLocationButton = setUpButton("Open file location");
 		clearButton = setUpButton("Clear text");
 		changeThemeButton = setUpButton("Toggle dark mode");
 
@@ -104,15 +104,16 @@ public class MainFrame extends JFrame implements ActionListener {
 
 			if (fileChosen == JFileChooser.APPROVE_OPTION) {
 				String filePath = fileChooser.getSelectedFile().getAbsolutePath();
-				currentFile = new File(filePath);
+				File file = new File(filePath);
 
 				try {
-					scanner = new Scanner(new FileInputStream(currentFile));
+					scanner = new Scanner(new FileInputStream(file));
 				} catch (FileNotFoundException | SecurityException exception) {
 					JOptionPane.showMessageDialog(this, "This file cannot be read or found....", "Unable to read!",
 							JOptionPane.ERROR_MESSAGE);
 				} finally {
 					if (scanner != null) {
+						locationPath = file.getParentFile();
 						textArea.setText("");
 
 						while (scanner.hasNextLine()) {
@@ -120,7 +121,7 @@ public class MainFrame extends JFrame implements ActionListener {
 						}
 
 						textArea.setCaretPosition(0);
-						this.setTitle(String.format("%s (%s)", defaultTitle, filePath));
+						setWindowTitle(String.format("%s (%s)", defaultTitle, filePath));
 						scanner.close();
 						scanner = null;
 					}
@@ -141,13 +142,14 @@ public class MainFrame extends JFrame implements ActionListener {
 		} else if (e.getSource() == clearButton) {
 			textArea.setText("");
 			setWindowTitle(defaultTitle);
+			locationPath = null;
 		} else if (e.getSource() == findButton) {
 			new FindText(textArea, findButton);
 			findButton.setEnabled(false);
 		} else if (e.getSource() == openFileLocationButton) {
-			if (currentFile != null) {
+			if (locationPath != null) {
 				try {
-					desktop.open(currentFile.getParentFile());
+					desktop.open(locationPath);
 				} catch (IOException e1) {
 					JOptionPane.showMessageDialog(this, "Cannot open file location!", "Unable to open file explorer!",
 							JOptionPane.ERROR_MESSAGE);
