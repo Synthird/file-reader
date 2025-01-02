@@ -99,7 +99,6 @@ public class MainFrame extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == openFile) {
 			JFileChooser fileChooser = new JFileChooser();
-
 			int fileChosen = fileChooser.showOpenDialog(this);
 
 			if (fileChosen == JFileChooser.APPROVE_OPTION) {
