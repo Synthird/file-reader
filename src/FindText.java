@@ -61,10 +61,8 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == textField || e.getSource() == findButton) {
-			String fileText = textAreaToFind.getText();
-
 			Pattern pattern = Pattern.compile(textField.getText());
-			Matcher matcher = pattern.matcher(fileText);
+			Matcher matcher = pattern.matcher(textAreaToFind.getText());
 
 			highlighter.removeAllHighlights();
 
