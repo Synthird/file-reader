@@ -147,7 +147,7 @@ public class MainFrame extends JFrame implements ActionListener {
 			new FindText(textArea, findButton);
 			findButton.setEnabled(false);
 		} else if (e.getSource() == openFileLocationButton) {
-			if (locationPath != null) {
+			if (locationPath != null && locationPath.exists()) {
 				try {
 					desktop.open(locationPath);
 				} catch (IOException e1) {
