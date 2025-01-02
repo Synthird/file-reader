@@ -109,8 +109,7 @@ public class MainFrame extends JFrame implements ActionListener {
 				try {
 					scanner = new Scanner(new FileInputStream(file));
 				} catch (FileNotFoundException | SecurityException exception) {
-					JOptionPane.showMessageDialog(this, "This file cannot be read or found....", "Unable to read!",
-							JOptionPane.ERROR_MESSAGE);
+					showErrorDialog("This file cannot be read or found....", "Unable to read!");
 				} finally {
 					if (scanner != null) {
 						locationPath = file.getParentFile();
@@ -151,9 +150,10 @@ public class MainFrame extends JFrame implements ActionListener {
 				try {
 					desktop.open(locationPath);
 				} catch (IOException e1) {
-					JOptionPane.showMessageDialog(this, "Cannot open file location!", "Unable to open file explorer!",
-							JOptionPane.ERROR_MESSAGE);
+					showCannotFindLocationDialog();
 				}
+			} else {
+				showCannotFindLocationDialog();
 			}
 		}
 	}
@@ -187,5 +187,13 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	private void setWindowTitle(String text) {
 		this.setTitle(text);
+	}
+
+	private void showErrorDialog(String message, String title) {
+		JOptionPane.showMessageDialog(this, message, title, JOptionPane.ERROR_MESSAGE);
+	}
+
+	private void showCannotFindLocationDialog() {
+		showErrorDialog("Cannot open file location!", "Unable to open file explorer!");
 	}
 }
