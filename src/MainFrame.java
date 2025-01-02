@@ -75,14 +75,14 @@ public class MainFrame extends JFrame implements ActionListener {
 		this.add(buttonPanel, BorderLayout.SOUTH);
 
 		openFile = setUpButton("Open file");
-		findButton = setUpButton("Find");
+		findButton = setUpButton("Find text");
 		copyButton = setUpButton("Copy entire text");
 		clearButton = setUpButton("Clear text");
 		changeThemeButton = setUpButton("Toggle dark mode");
 
 		// Window setup
 		setWindowTitle(defaultTitle);
-		this.setSize(544, 400);
+		this.setSize(570, 400);
 		this.setLocationRelativeTo(null);
 		this.setMinimumSize(this.getSize());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

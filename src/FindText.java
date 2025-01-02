@@ -49,8 +49,8 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 		findButton = setUpButton("Find");
 		clearHighlighted = setUpButton("Clear highlighted");
 
-		this.setTitle("Find (Case sensitive)");
-		this.setSize(310, 110);
+		this.setTitle("Find text (Case sensitive)");
+		this.setSize(324, 110);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.addWindowListener(this);
