@@ -40,7 +40,6 @@ public class MainFrame extends JFrame implements ActionListener {
 	JButton changeThemeButton;
 
 	Boolean darkMode;
-	Boolean findWindowOpened;
 
 	// Dark mode colours
 	Color darkBackgroundColour = new Color(40, 40, 40);
@@ -56,7 +55,6 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	public MainFrame() {
 		darkMode = false;
-		findWindowOpened = false;
 
 		// Textbox/textfield
 		textArea = new JTextArea("Open a file to view its contents.");
@@ -138,8 +136,8 @@ public class MainFrame extends JFrame implements ActionListener {
 			textArea.setText("");
 			setWindowTitle(defaultTitle);
 		} else if (e.getSource() == findButton) {
-			findButton.setEnabled(false);
 			new FindText(textArea, findButton);
+			findButton.setEnabled(false);
 		}
 	}
 
