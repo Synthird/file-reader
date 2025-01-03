@@ -2,9 +2,9 @@
 
 A GUI window that reads the contents/text of any file.
 
-## Download/Installation
-
 ![File reader GUI window](https://github.com/user-attachments/assets/f48495b3-bf88-4776-8fd4-11d538fe744e)
+
+## Download/Installation
 
 You can download a version in the [releases page](https://github.com/Synthird/File-reader/releases).
 
