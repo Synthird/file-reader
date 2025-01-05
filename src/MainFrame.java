@@ -109,7 +109,7 @@ public class MainFrame extends JFrame implements ActionListener {
 				try {
 					scanner = new Scanner(new FileInputStream(file), StandardCharsets.ISO_8859_1);
 				} catch (FileNotFoundException | SecurityException exception) {
-					showErrorDialog("This file cannot be read or found....", "Unable to read!");
+					showErrorDialog("This file cannot be read nor found....", "Unable to read!");
 				} finally {
 					if (scanner != null) {
 						locationPath = file.getParentFile();
