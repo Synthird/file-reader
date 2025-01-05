@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 import javax.swing.BorderFactory;
@@ -106,7 +107,7 @@ public class MainFrame extends JFrame implements ActionListener {
 				File file = new File(filePath);
 
 				try {
-					scanner = new Scanner(new FileInputStream(file));
+					scanner = new Scanner(new FileInputStream(file), StandardCharsets.ISO_8859_1);
 				} catch (FileNotFoundException | SecurityException exception) {
 					showErrorDialog("This file cannot be read or found....", "Unable to read!");
 				} finally {
