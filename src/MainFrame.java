@@ -83,13 +83,13 @@ public class MainFrame extends JFrame implements ActionListener {
 		openFile = setUpButton("Open file");
 		openFileLocationButton = setUpButton("Open file location");
 		findButton = setUpButton("Find text");
-		copyButton = setUpButton("Copy entire text");
+		copyButton = setUpButton("Copy text");
 		clearButton = setUpButton("Clear text");
 		changeThemeButton = setUpButton("Toggle dark mode");
 
 		// Window setup
 		setWindowTitle(defaultTitle);
-		this.setSize(705, 400);
+		this.setSize(675, 400);
 		this.setLocationRelativeTo(null);
 		this.setMinimumSize(this.getSize());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
