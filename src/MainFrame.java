@@ -33,17 +33,11 @@ public class MainFrame extends JFrame implements ActionListener {
 	File locationPath;
 
 	JScrollPane scrollPane;
-	JScrollBar verticalScrollBar;
-	JScrollBar horizontalScrollBar;
+	JScrollBar verticalScrollBar, horizontalScrollBar;
 	JTextArea textArea;
 
 	JPanel buttonPanel;
-	JButton openFile;
-	JButton copyButton;
-	JButton openFileLocationButton;
-	JButton clearButton;
-	JButton findButton;
-	JButton changeThemeButton;
+	JButton openFile, copyButton, openFileLocationButton, clearButton, findButton, changeThemeButton;
 
 	Boolean darkMode;
 

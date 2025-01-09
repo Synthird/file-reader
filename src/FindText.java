@@ -23,13 +23,10 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 	JTextArea textArea;
 	Highlighter highlighter;
 
-	JButton clickedButton;
-
 	DefaultHighlightPainter highlightColour = new DefaultHighlightPainter(Color.RED);
 
 	JPanel buttonPanel;
-	JButton findButton;
-	JButton clearHighlights;
+	JButton clearHighlights, findButton, clickedButton;
 
 	public FindText(JTextArea chosenTextArea, JButton openFindGUI) {
 		textArea = chosenTextArea;
