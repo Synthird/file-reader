@@ -35,9 +35,12 @@ public class MainFrame extends JFrame implements ActionListener {
 	JScrollPane scrollPane;
 	JScrollBar verticalScrollBar, horizontalScrollBar;
 	JTextArea textArea;
+	Font textFont = new Font("Monospaced", Font.PLAIN, 13);
+
+	float fontSize = (float)textFont.getSize();
 
 	JPanel buttonPanel;
-	JButton openFile, copyButton, openFileLocationButton, clearButton, findButton, changeThemeButton;
+	JButton openFile, copyButton, openFileLocationButton, clearButton, findButton, increaseText, decreaseText, changeThemeButton;
 
 	Boolean darkMode;
 
@@ -59,7 +62,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		// Textbox/textfield
 		textArea = new JTextArea("Open a file to view its contents.");
 		textArea.setCursor(new Cursor(Cursor.TEXT_CURSOR));
-		textArea.setFont(new Font("Monospaced", Font.PLAIN, 13));
+		textArea.setFont(textFont);
 		textArea.setEditable(false);
 
 		scrollPane = new JScrollPane(textArea);
@@ -79,11 +82,13 @@ public class MainFrame extends JFrame implements ActionListener {
 		findButton = setUpButton("Find text");
 		copyButton = setUpButton("Copy text");
 		clearButton = setUpButton("Clear text");
+		decreaseText = setUpButton("Decrease size");
+		increaseText = setUpButton("Increase size");
 		changeThemeButton = setUpButton("Toggle dark mode");
 
 		// Window setup
 		setWindowTitle(defaultTitle);
-		this.setSize(675, 400);
+		this.setSize(903, 400);
 		this.setLocationRelativeTo(null);
 		this.setMinimumSize(this.getSize());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -149,6 +154,12 @@ public class MainFrame extends JFrame implements ActionListener {
 			} else {
 				showCannotFindLocationDialog();
 			}
+		} else if (e.getSource() == decreaseText) {
+			fontSize--;
+			textArea.setFont(textFont.deriveFont(fontSize));
+		} else if (e.getSource() == increaseText) {
+			fontSize++;
+			textArea.setFont(textFont.deriveFont(fontSize));
 		}
 	}
 
