@@ -38,7 +38,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	JTextArea textArea;
 
 	Font textFont = new Font("Monospaced", Font.PLAIN, 13);
-	float fontSize = (float)textFont.getSize();
+	float fontSize = (float) textFont.getSize();
 
 	JMenuBar menuBar;
 	JMenuItem open, openLocation, findText, copyText, clearText, increaseSize, decreaseSize, darkChoice, lightChoice;
