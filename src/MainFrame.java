@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Desktop;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
@@ -88,9 +89,9 @@ public class MainFrame extends JFrame implements ActionListener {
 
 		// Window setup
 		setWindowTitle(defaultTitle);
-		this.setSize(903, 400);
+		this.pack();
+		this.setMinimumSize(new Dimension(this.getWidth(), 400));
 		this.setLocationRelativeTo(null);
-		this.setMinimumSize(this.getSize());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
