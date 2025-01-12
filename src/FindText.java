@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -26,9 +27,10 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 	DefaultHighlightPainter highlightColour = new DefaultHighlightPainter(Color.RED);
 
 	JPanel buttonPanel;
-	JButton clearHighlights, findButton, clickedButton;
+	JMenuItem clickedButton;
+	JButton clearHighlights, findButton;
 
-	public FindText(JTextArea chosenTextArea, JButton openFindGUI) {
+	public FindText(JTextArea chosenTextArea, JMenuItem openFindGUI) {
 		textArea = chosenTextArea;
 		clickedButton = openFindGUI;
 

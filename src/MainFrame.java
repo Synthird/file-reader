@@ -1,6 +1,5 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
@@ -17,11 +16,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -36,24 +36,24 @@ public class MainFrame extends JFrame implements ActionListener {
 	JScrollPane scrollPane;
 	JScrollBar verticalScrollBar, horizontalScrollBar;
 	JTextArea textArea;
-	Font textFont = new Font("Monospaced", Font.PLAIN, 13);
 
+	Font textFont = new Font("Monospaced", Font.PLAIN, 13);
 	float fontSize = (float)textFont.getSize();
 
-	JPanel buttonPanel;
-	JButton openFile, copyButton, openFileLocationButton, clearButton, findButton, increaseText, decreaseText, changeThemeButton;
+	JMenuBar menuBar;
+	JMenuItem open, openLocation, findText, copyText, clearText, increaseSize, decreaseSize, darkChoice, lightChoice;
 
 	Boolean darkMode;
 
 	// Dark mode colours
-	Color darkBackgroundColour = new Color(40, 40, 40);
-	Color darkSecondaryBackgroundColour = new Color(30, 30, 30);
+	Color darkBackgroundColour = new Color(30, 30, 30);
+	Color darkTextBackgroundColour = new Color(30, 30, 30);
 
 	Color whiteText = new Color(215, 215, 215);
 
 	// Light mode colours
-	Color lightBackgroundColour = this.getContentPane().getBackground();
-	Color lightSecondaryBackgroundColour = new Color(243, 243, 243);
+	Color lightBackgroundColour = new Color(255, 255, 255);
+	Color lightTextBackgroundColour = new Color(255, 255, 255);
 
 	Color blackText = new Color(51, 51, 51);
 
@@ -73,24 +73,71 @@ public class MainFrame extends JFrame implements ActionListener {
 		scrollPane.setBorder(BorderFactory.createEmptyBorder(3, 3, 0, 3));
 		this.add(scrollPane, BorderLayout.CENTER);
 
-		// Buttons
-		buttonPanel = new JPanel();
-		buttonPanel.setOpaque(false);
-		this.add(buttonPanel, BorderLayout.SOUTH);
+		// Menubar
+		menuBar = new JMenuBar();
+		menuBar.setOpaque(false);
 
-		openFile = setUpButton("Open file");
-		openFileLocationButton = setUpButton("Open file location");
-		findButton = setUpButton("Find text");
-		copyButton = setUpButton("Copy text");
-		clearButton = setUpButton("Clear text");
-		decreaseText = setUpButton("Decrease size");
-		increaseText = setUpButton("Increase size");
-		changeThemeButton = setUpButton("Toggle dark mode");
+		// File menu
+		JMenu fileMenu = new JMenu("File");
+
+		open = new JMenuItem("Open file");
+		open.addActionListener(this);
+		fileMenu.add(open);
+
+		openLocation = new JMenuItem("Open file location");
+		openLocation.addActionListener(this);
+		fileMenu.add(openLocation);
+
+		menuBar.add(fileMenu);
+
+		// Text menu
+		JMenu textMenu = new JMenu("Text");
+
+		findText = new JMenuItem("Find text");
+		findText.addActionListener(this);
+		textMenu.add(findText);
+
+		copyText = new JMenuItem("Copy text");
+		copyText.addActionListener(this);
+		textMenu.add(copyText);
+
+		clearText = new JMenuItem("Clear text");
+		clearText.addActionListener(this);
+		textMenu.add(clearText);
+
+		menuBar.add(textMenu);
+
+		// Size menu
+		JMenu sizeMenu = new JMenu("Size");
+
+		increaseSize = new JMenuItem("Increase text size");
+		increaseSize.addActionListener(this);
+		sizeMenu.add(increaseSize);
+
+		decreaseSize = new JMenuItem("Decrease text size");
+		decreaseSize.addActionListener(this);
+		sizeMenu.add(decreaseSize);
+
+		menuBar.add(sizeMenu);
+
+		// Theme menu
+		JMenu themeMenu = new JMenu("Theme");
+
+		darkChoice = new JMenuItem("Dark");
+		darkChoice.addActionListener(this);
+		themeMenu.add(darkChoice);
+
+		lightChoice = new JMenuItem("Light");
+		lightChoice.addActionListener(this);
+		themeMenu.add(lightChoice);
+
+		menuBar.add(themeMenu);
 
 		// Window setup
 		setWindowTitle(defaultTitle);
-		this.pack();
-		this.setMinimumSize(new Dimension(this.getWidth(), 400));
+		this.setJMenuBar(menuBar);
+		this.setMinimumSize(new Dimension(500, 400));
+		this.getContentPane().setBackground(lightBackgroundColour);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
@@ -98,7 +145,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == openFile) {
+		if (e.getSource() == open) {
 			JFileChooser fileChooser = new JFileChooser();
 			int fileChosen = fileChooser.showOpenDialog(this);
 
@@ -126,26 +173,18 @@ public class MainFrame extends JFrame implements ActionListener {
 					}
 				}
 			}
-		} else if (e.getSource() == changeThemeButton) {
-			darkMode = !darkMode;
-
-			if (darkMode) {
-				setTheme(darkBackgroundColour, darkSecondaryBackgroundColour, whiteText, "light");
-			} else {
-				setTheme(lightBackgroundColour, lightSecondaryBackgroundColour, blackText, "dark");
-			}
-		} else if (e.getSource() == copyButton) {
+		} else if (e.getSource() == copyText) {
 			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(textArea.getText()), null);
 			JOptionPane.showMessageDialog(this, "Text copied to clipboard!", "Text copied!",
 					JOptionPane.INFORMATION_MESSAGE);
-		} else if (e.getSource() == clearButton) {
+		} else if (e.getSource() == clearText) {
 			textArea.setText("");
 			setWindowTitle(defaultTitle);
 			locationPath = null;
-		} else if (e.getSource() == findButton) {
-			findButton.setEnabled(false);
-			new FindText(textArea, findButton);
-		} else if (e.getSource() == openFileLocationButton) {
+		} else if (e.getSource() == findText) {
+			findText.setEnabled(false);
+			new FindText(textArea, findText);
+		} else if (e.getSource() == openLocation) {
 			if (locationPath != null && locationPath.exists()) {
 				try {
 					desktop.open(locationPath);
@@ -155,27 +194,22 @@ public class MainFrame extends JFrame implements ActionListener {
 			} else {
 				showCannotFindLocationDialog();
 			}
-		} else if (e.getSource() == decreaseText) {
+		} else if (e.getSource() == decreaseSize) {
 			fontSize--;
 			textArea.setFont(textFont.deriveFont(fontSize));
-		} else if (e.getSource() == increaseText) {
+		} else if (e.getSource() == increaseSize) {
 			fontSize++;
 			textArea.setFont(textFont.deriveFont(fontSize));
+		} else if (e.getSource() == darkChoice) {
+			setTheme(darkBackgroundColour, darkTextBackgroundColour, whiteText);
+		} else if (e.getSource() == lightChoice) {
+			setTheme(lightBackgroundColour, lightTextBackgroundColour, blackText);
 		}
 	}
 
 	// GUI setup
 
-	private JButton setUpButton(String buttonText) {
-		JButton button = new JButton(buttonText);
-		button.setFocusable(false);
-		button.addActionListener(this);
-		buttonPanel.add(button);
-		return button;
-	}
-
-	private void setTheme(Color backgroundColour, Color textBackgroundColour, Color textColour, String themeName) {
-		changeThemeButton.setText(String.format("Toggle %s mode", themeName));
+	private void setTheme(Color backgroundColour, Color textBackgroundColour, Color textColour) {
 		this.getContentPane().setBackground(backgroundColour);
 		// Changing the scrollbar colours
 		verticalScrollBar.setBackground(backgroundColour);
@@ -184,11 +218,6 @@ public class MainFrame extends JFrame implements ActionListener {
 		textArea.setBackground(textBackgroundColour);
 		textArea.setForeground(textColour);
 		textArea.setCaretColor(textColour);
-		// Changing the colours of the buttons
-		for (Component component : buttonPanel.getComponents()) {
-			component.setBackground(backgroundColour);
-			component.setForeground(textColour);
-		}
 	}
 
 	private void setWindowTitle(String text) {
