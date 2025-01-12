@@ -132,7 +132,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		// Window setup
 		setWindowTitle(defaultTitle);
 		this.setJMenuBar(menuBar);
-		this.setMinimumSize(new Dimension(500, 400));
+		this.setMinimumSize(new Dimension(600, 400));
 		this.getContentPane().setBackground(lightBackgroundColour);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
