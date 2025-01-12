@@ -106,20 +106,15 @@ public class MainFrame extends JFrame implements ActionListener {
 		clearText.addActionListener(this);
 		textMenu.add(clearText);
 
-		menuBar.add(textMenu);
-
-		// Size menu
-		JMenu sizeMenu = new JMenu("Size");
-
-		increaseSize = new JMenuItem("Increase text size");
+		increaseSize = new JMenuItem("Increase size");
 		increaseSize.addActionListener(this);
-		sizeMenu.add(increaseSize);
+		textMenu.add(increaseSize);
 
-		decreaseSize = new JMenuItem("Decrease text size");
+		decreaseSize = new JMenuItem("Decrease size");
 		decreaseSize.addActionListener(this);
-		sizeMenu.add(decreaseSize);
+		textMenu.add(decreaseSize);
 
-		menuBar.add(sizeMenu);
+		menuBar.add(textMenu);
 
 		// Theme menu
 		JMenu themeMenu = new JMenu("Theme");
