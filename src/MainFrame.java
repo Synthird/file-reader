@@ -75,6 +75,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
 		// Menubar
 		menuBar = new JMenuBar();
+		menuBar.setBorder(BorderFactory.createEmptyBorder());
 		menuBar.setOpaque(false);
 
 		// File menu
