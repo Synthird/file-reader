@@ -81,11 +81,11 @@ public class MainFrame extends JFrame implements ActionListener {
 		// File menu
 		JMenu fileMenu = new JMenu("File");
 
-		open = new JMenuItem("Open file");
+		open = new JMenuItem("📜 Open file");
 		open.addActionListener(this);
 		fileMenu.add(open);
 
-		openLocation = new JMenuItem("Open file location");
+		openLocation = new JMenuItem("📂 Open file location");
 		openLocation.addActionListener(this);
 		fileMenu.add(openLocation);
 
@@ -94,23 +94,23 @@ public class MainFrame extends JFrame implements ActionListener {
 		// Text menu
 		JMenu textMenu = new JMenu("Text");
 
-		findText = new JMenuItem("Find text");
+		findText = new JMenuItem("🔍 Find text");
 		findText.addActionListener(this);
 		textMenu.add(findText);
 
-		copyText = new JMenuItem("Copy text");
+		copyText = new JMenuItem("📋 Copy text");
 		copyText.addActionListener(this);
 		textMenu.add(copyText);
 
-		clearText = new JMenuItem("Clear text");
+		clearText = new JMenuItem("X Clear text");
 		clearText.addActionListener(this);
 		textMenu.add(clearText);
 
-		increaseSize = new JMenuItem("Increase size");
+		increaseSize = new JMenuItem("+ Increase size");
 		increaseSize.addActionListener(this);
 		textMenu.add(increaseSize);
 
-		decreaseSize = new JMenuItem("Decrease size");
+		decreaseSize = new JMenuItem("\u2014 Decrease size");
 		decreaseSize.addActionListener(this);
 		textMenu.add(decreaseSize);
 
@@ -119,11 +119,11 @@ public class MainFrame extends JFrame implements ActionListener {
 		// Theme menu
 		JMenu themeMenu = new JMenu("Theme");
 
-		darkChoice = new JMenuItem("Dark");
+		darkChoice = new JMenuItem("\u263d Dark");
 		darkChoice.addActionListener(this);
 		themeMenu.add(darkChoice);
 
-		lightChoice = new JMenuItem("Light");
+		lightChoice = new JMenuItem("\u263c Light");
 		lightChoice.addActionListener(this);
 		themeMenu.add(lightChoice);
 
