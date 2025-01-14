@@ -37,7 +37,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	JScrollBar verticalScrollBar, horizontalScrollBar;
 	JTextArea textArea;
 
-	Font textFont = new Font("Monospaced", Font.PLAIN, 13);
+	Font textFont = new Font("Monospaced", Font.PLAIN, 15);
 	float fontSize = (float) textFont.getSize();
 
 	JMenuBar menuBar;
