@@ -151,19 +151,19 @@ public class MainFrame extends JFrame implements ActionListener {
 
 				try {
 					scanner = new Scanner(new FileInputStream(file), StandardCharsets.ISO_8859_1);
-				} catch (FileNotFoundException | SecurityException exception) {
+					locationPath = file.getParentFile();
+					textArea.setText("");
+
+					while (scanner.hasNextLine()) {
+						textArea.append(String.format("%s\n", scanner.nextLine()));
+					}
+
+					textArea.setCaretPosition(0);
+					setWindowTitle(String.format("%s (%s)", defaultTitle, filePath));
+				} catch (FileNotFoundException | SecurityException | IllegalStateException exception) {
 					showErrorDialog("This file cannot be read or found....", "Unable to read!");
 				} finally {
 					if (scanner != null) {
-						locationPath = file.getParentFile();
-						textArea.setText("");
-
-						while (scanner.hasNextLine()) {
-							textArea.append(String.format("%s\n", scanner.nextLine()));
-						}
-
-						textArea.setCaretPosition(0);
-						setWindowTitle(String.format("%s (%s)", defaultTitle, filePath));
 						scanner.close();
 						scanner = null;
 					}
