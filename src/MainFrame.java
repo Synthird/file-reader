@@ -146,10 +146,10 @@ public class MainFrame extends JFrame implements ActionListener {
 			int fileChosen = fileChooser.showOpenDialog(this);
 
 			if (fileChosen == JFileChooser.APPROVE_OPTION) {
-				String filePath = fileChooser.getSelectedFile().getAbsolutePath();
-				File file = new File(filePath);
-
 				try {
+					String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+					File file = new File(filePath);
+
 					scanner = new Scanner(new FileInputStream(file), StandardCharsets.ISO_8859_1);
 					locationPath = file.getParentFile();
 					textArea.setText("");
