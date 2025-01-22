@@ -81,11 +81,11 @@ public class MainFrame extends JFrame implements ActionListener {
 		// File menu
 		JMenu fileMenu = new JMenu("File");
 
-		open = new JMenuItem("📜 Open file");
+		open = new JMenuItem("Open file");
 		open.addActionListener(this);
 		fileMenu.add(open);
 
-		openLocation = new JMenuItem("📂 Open file location");
+		openLocation = new JMenuItem("Open file location");
 		openLocation.addActionListener(this);
 		fileMenu.add(openLocation);
 
@@ -94,15 +94,15 @@ public class MainFrame extends JFrame implements ActionListener {
 		// Text menu
 		JMenu textMenu = new JMenu("Text");
 
-		findText = new JMenuItem("🔍 Find text");
+		findText = new JMenuItem("Find text");
 		findText.addActionListener(this);
 		textMenu.add(findText);
 
-		copyText = new JMenuItem("📋 Copy text");
+		copyText = new JMenuItem("Copy text");
 		copyText.addActionListener(this);
 		textMenu.add(copyText);
 
-		clearText = new JMenuItem("X Clear text");
+		clearText = new JMenuItem("Clear text");
 		clearText.addActionListener(this);
 		textMenu.add(clearText);
 
