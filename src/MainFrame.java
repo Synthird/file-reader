@@ -181,14 +181,13 @@ public class MainFrame extends JFrame implements ActionListener {
 			findText.setEnabled(false);
 			new FindText(textArea, findText);
 		} else if (e.getSource() == openLocation) {
-			if (locationPath != null && locationPath.exists()) {
-				try {
-					desktop.open(locationPath);
-				} catch (IOException e1) {
-					showCannotFindLocationDialog();
-				}
-			} else {
-				showCannotFindLocationDialog();
+			try {
+				desktop.open(locationPath);
+			} catch (IOException | NullPointerException | IllegalArgumentException
+					| SecurityException cannotOpenLocationException) {
+				showCannotOpenLocationDialog("Cannot open file location! A folder has been deleted or renamed.....");
+			} catch (UnsupportedOperationException unsupportedOperationException) {
+				showCannotOpenLocationDialog("Opening a file location is not supported on this platform :(");
 			}
 		} else if (e.getSource() == decreaseSize) {
 			fontSize--;
@@ -224,8 +223,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		JOptionPane.showMessageDialog(this, message, title, JOptionPane.ERROR_MESSAGE);
 	}
 
-	private void showCannotFindLocationDialog() {
-		showErrorDialog("Cannot open file location! It doesn't exist, or it has been renamed.....",
-				"Unable to open file explorer!");
+	private void showCannotOpenLocationDialog(String message) {
+		showErrorDialog(message, "Unable to open file explorer!");
 	}
 }
