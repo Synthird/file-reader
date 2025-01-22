@@ -36,11 +36,13 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 
 		highlighter = textArea.getHighlighter();
 
+		// TextField setup
 		textField = new JTextField();
 		textField.setFont(new Font("Monospaced", Font.PLAIN, 13));
 		textField.addActionListener(this);
 		this.add(textField);
 
+		// Button setup
 		buttonPanel = new JPanel();
 		buttonPanel.setOpaque(false);
 		this.add(buttonPanel, BorderLayout.SOUTH);
@@ -48,6 +50,7 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 		findButton = setUpButton("Find");
 		clearHighlights = setUpButton("Clear highlighted text");
 
+		// Window setup
 		this.setTitle("Find text (Case sensitive)");
 		this.setSize(324, 110);
 		this.setLocationRelativeTo(null);
