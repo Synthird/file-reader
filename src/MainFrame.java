@@ -9,11 +9,9 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.Scanner;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFileChooser;
@@ -27,18 +25,20 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class MainFrame extends JFrame implements ActionListener {
+	// Default variables
 	String defaultTitle = "File reader";
 	Desktop desktop = Desktop.getDesktop();
 
-	Scanner scanner;
+	Font textFont = new Font("Monospaced", Font.PLAIN, 15);
+	float fontSize = (float) textFont.getSize();
+
+	// Blank variables
+	FileReader fileReader;
 	File locationPath;
 
 	JScrollPane scrollPane;
 	JScrollBar verticalScrollBar, horizontalScrollBar;
 	JTextArea textArea;
-
-	Font textFont = new Font("Monospaced", Font.PLAIN, 15);
-	float fontSize = (float) textFont.getSize();
 
 	JMenuBar menuBar;
 	JMenuItem open, openLocation, findText, copyText, clearText, increaseSize, decreaseSize, darkChoice, lightChoice;
@@ -142,57 +142,74 @@ public class MainFrame extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == open) {
+			// Open the choose file dialog
 			JFileChooser fileChooser = new JFileChooser();
 			int fileChosen = fileChooser.showOpenDialog(this);
 
 			if (fileChosen == JFileChooser.APPROVE_OPTION) {
 				try {
+					// Read a file
 					String filePath = fileChooser.getSelectedFile().getAbsolutePath();
 					File file = new File(filePath);
 
-					scanner = new Scanner(new FileInputStream(file), StandardCharsets.ISO_8859_1);
+					fileReader = new FileReader(file, StandardCharsets.ISO_8859_1);
+
+					textArea.read(fileReader, null);
 					locationPath = file.getParentFile();
-					textArea.setText("");
 
-					while (scanner.hasNextLine()) {
-						textArea.append(String.format("%s\n", scanner.nextLine()));
-					}
-
-					textArea.setCaretPosition(0);
 					setWindowTitle(String.format("%s (%s)", defaultTitle, filePath));
-				} catch (FileNotFoundException | SecurityException | IllegalStateException exception) {
+				} catch (IOException | SecurityException | NullPointerException exception) {
 					showErrorDialog("This file cannot be read or found....", "Unable to read!");
 				} finally {
-					if (scanner != null) {
-						scanner.close();
-						scanner = null;
+					// Close the file reader and destroy it
+					if (fileReader != null) {
+						try {
+							fileReader.close();
+						} catch (IOException e1) {
+							showErrorDialog(
+									"This file can no longer be renamed or deleted when the file reader is opened....",
+									"File cannot be deleted or renamed!");
+						} finally {
+							fileReader = null;
+						}
 					}
 				}
 			}
 		} else if (e.getSource() == copyText) {
+			// Copy text
 			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(textArea.getText()), null);
 			JOptionPane.showMessageDialog(this, "Text copied to clipboard!", "Text copied!",
 					JOptionPane.INFORMATION_MESSAGE);
 		} else if (e.getSource() == clearText) {
+			// Clear text
 			textArea.setText("");
 			setWindowTitle(defaultTitle);
 			locationPath = null;
 		} else if (e.getSource() == findText) {
+			// Find text
 			findText.setEnabled(false);
 			new FindText(textArea, findText);
 		} else if (e.getSource() == openLocation) {
+			// Open file location
 			try {
 				desktop.open(locationPath);
-			} catch (IOException | NullPointerException | IllegalArgumentException
-					| SecurityException cannotOpenLocationException) {
-				showCannotOpenLocationDialog("Cannot open file location! A folder has been deleted or renamed.....");
+			} catch (IOException | NullPointerException | IllegalArgumentException | SecurityException openLocationException) {
+				// Show a different dialog if a file isn't opened
+				if (locationPath != null) {
+					showCannotOpenLocationDialog(
+							"Cannot open file location! A folder has been deleted or renamed.....");
+				} else {
+					showCannotOpenLocationDialog("A file isn't opened.....");
+				}
 			} catch (UnsupportedOperationException unsupportedOperationException) {
 				showCannotOpenLocationDialog("Opening a file location is not supported on this platform :(");
 			}
 		} else if (e.getSource() == decreaseSize) {
+			// Decrease font size
 			fontSize--;
 			textArea.setFont(textFont.deriveFont(fontSize));
 		} else if (e.getSource() == increaseSize) {
+			// Increase font size
 			fontSize++;
 			textArea.setFont(textFont.deriveFont(fontSize));
 		} else if (e.getSource() == darkChoice) {
