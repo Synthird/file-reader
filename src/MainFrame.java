@@ -32,6 +32,18 @@ public class MainFrame extends JFrame implements ActionListener {
 	Font textFont = new Font("Monospaced", Font.PLAIN, 15);
 	float fontSize = (float) textFont.getSize();
 
+	// Dark mode colours
+	Color darkBackgroundColour = new Color(30, 30, 30);
+	Color darkTextBackgroundColour = new Color(30, 30, 30);
+
+	Color whiteText = new Color(215, 215, 215);
+
+	// Light mode colours
+	Color lightBackgroundColour = new Color(255, 255, 255);
+	Color lightTextBackgroundColour = new Color(255, 255, 255);
+
+	Color blackText = new Color(51, 51, 51);
+
 	// Blank variables
 	FileReader fileReader;
 	File locationPath;
@@ -44,18 +56,6 @@ public class MainFrame extends JFrame implements ActionListener {
 	JMenuItem open, openLocation, findText, copyText, clearText, increaseSize, decreaseSize, darkChoice, lightChoice;
 
 	Boolean darkMode;
-
-	// Dark mode colours
-	Color darkBackgroundColour = new Color(30, 30, 30);
-	Color darkTextBackgroundColour = new Color(30, 30, 30);
-
-	Color whiteText = new Color(215, 215, 215);
-
-	// Light mode colours
-	Color lightBackgroundColour = new Color(255, 255, 255);
-	Color lightTextBackgroundColour = new Color(255, 255, 255);
-
-	Color blackText = new Color(51, 51, 51);
 
 	public MainFrame() {
 		darkMode = false;
