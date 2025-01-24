@@ -20,11 +20,13 @@ import javax.swing.text.DefaultHighlighter.DefaultHighlightPainter;
 import javax.swing.text.Highlighter;
 
 public class FindText extends JFrame implements ActionListener, WindowListener {
+	// Default variables
+	DefaultHighlightPainter highlightColour = new DefaultHighlightPainter(Color.RED);
+
+	// Blank variables
 	JTextField textField;
 	JTextArea textArea;
 	Highlighter highlighter;
-
-	DefaultHighlightPainter highlightColour = new DefaultHighlightPainter(Color.RED);
 
 	JPanel buttonPanel;
 	JMenuItem clickedButton;
@@ -63,6 +65,7 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == textField || e.getSource() == findButton) {
+			// Highlight text to be looked for
 			Pattern pattern = Pattern.compile(textField.getText());
 			Matcher matcher = pattern.matcher(textArea.getText());
 
