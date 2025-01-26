@@ -168,7 +168,7 @@ public class MainFrame extends JFrame implements ActionListener {
 						} catch (IOException e1) {
 							showErrorDialog(
 									"This file can no longer be renamed or deleted when the file reader is opened....",
-									"File cannot be deleted or renamed!");
+									"File reader prevents this file to be deleted or renamed!");
 						} finally {
 							fileReader = null;
 						}
