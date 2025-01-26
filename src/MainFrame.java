@@ -28,6 +28,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	// Default variables
 	String defaultTitle = "File reader";
 	Desktop desktop = Desktop.getDesktop();
+	File defafultLocation = new File(System.getProperty("user.home"));
 	JFileChooser fileChooser = new JFileChooser();
 
 	Font textFont = new Font("Monospaced", Font.PLAIN, 15);
@@ -60,6 +61,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	public MainFrame() {
 		fileChooser.setDialogTitle("Open file");
+		fileChooser.setCurrentDirectory(defafultLocation);
 		darkMode = false;
 
 		// Textbox/textfield
@@ -157,6 +159,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
 					textArea.read(fileReader, null);
 					locationPath = file.getParentFile();
+					fileChooser.setCurrentDirectory(locationPath);
 
 					setWindowTitle(String.format("%s (%s)", defaultTitle, filePath));
 				} catch (IOException | SecurityException | NullPointerException exception) {
@@ -191,6 +194,11 @@ public class MainFrame extends JFrame implements ActionListener {
 			findText.setEnabled(false);
 			new FindText(textArea, findText);
 		} else if (e.getSource() == openLocation) {
+			// Change the fileChooser current directory back to default if locationPath doesn't exist
+			if (!locationPath.exists()) {
+				fileChooser.setCurrentDirectory(defafultLocation);
+			}
+
 			// Open file location
 			try {
 				desktop.open(locationPath);
