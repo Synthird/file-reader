@@ -150,8 +150,8 @@ public class MainFrame extends JFrame implements ActionListener {
 				try {
 					// Read a file
 					String filePath = fileChooser.getSelectedFile().getAbsolutePath();
-					File file = new File(filePath);
 
+					File file = new File(filePath);
 					fileReader = new FileReader(file, StandardCharsets.ISO_8859_1);
 
 					textArea.read(fileReader, null);
