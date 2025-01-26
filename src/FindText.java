@@ -76,7 +76,7 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 					highlighter.addHighlight(matcher.start(), matcher.end(), highlightColour);
 				} catch (IllegalStateException | BadLocationException exception) {
 					JOptionPane.showMessageDialog(this, "Unable to perform the find text feature....",
-							"Unable to attempt a match!", JOptionPane.ERROR_MESSAGE);
+							"Finding text failed!", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		} else if (e.getSource() == clearHighlights) {
