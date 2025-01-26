@@ -23,6 +23,8 @@ import javax.swing.text.Highlighter;
 public class FindText extends JFrame implements ActionListener, WindowListener {
 	// Default variables
 	DefaultHighlightPainter highlightColour = new DefaultHighlightPainter(Color.RED);
+
+	String defaultCounterText = "0 text found";
 	int foundCounter = 0;
 
 	// Blank variables
@@ -48,7 +50,7 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 		this.add(textField);
 
 		// Counter setup
-		labelCounter = new JLabel("0 text found");
+		labelCounter = new JLabel(defaultCounterText);
 		labelCounter.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
 		labelCounter.setOpaque(false);
 		labelCounter.setHorizontalAlignment(JLabel.CENTER);
@@ -79,7 +81,7 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 			Pattern pattern = Pattern.compile(textField.getText());
 			Matcher matcher = pattern.matcher(textArea.getText());
 
-			highlighter.removeAllHighlights();
+			clearHighlightedText();
 
 			while (matcher.find()) {
 				try {
@@ -93,7 +95,7 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 
 			labelCounter.setText(String.format("%d text found", foundCounter));
 		} else if (e.getSource() == clearHighlights) {
-			highlighter.removeAllHighlights();
+			clearHighlightedText();
 		}
 	}
 
@@ -103,6 +105,12 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 		button.addActionListener(this);
 		buttonPanel.add(button);
 		return button;
+	}
+
+	private void clearHighlightedText() {
+		foundCounter = 0;
+		highlighter.removeAllHighlights();
+		labelCounter.setText(defaultCounterText);
 	}
 
 	@Override
