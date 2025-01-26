@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -22,8 +23,10 @@ import javax.swing.text.Highlighter;
 public class FindText extends JFrame implements ActionListener, WindowListener {
 	// Default variables
 	DefaultHighlightPainter highlightColour = new DefaultHighlightPainter(Color.RED);
+	int foundCounter = 0;
 
 	// Blank variables
+	JLabel labelCounter;
 	JTextField textField;
 	JTextArea textArea;
 	Highlighter highlighter;
@@ -44,6 +47,13 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 		textField.addActionListener(this);
 		this.add(textField);
 
+		// Counter setup
+		labelCounter = new JLabel("0 text found");
+		labelCounter.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
+		labelCounter.setOpaque(false);
+		labelCounter.setHorizontalAlignment(JLabel.CENTER);
+		this.add(labelCounter, BorderLayout.NORTH);
+
 		// Button setup
 		buttonPanel = new JPanel();
 		buttonPanel.setOpaque(false);
@@ -54,7 +64,7 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 
 		// Window setup
 		this.setTitle("Find text (Case sensitive)");
-		this.setSize(324, 110);
+		this.setSize(324, 130);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.addWindowListener(this);
@@ -74,11 +84,14 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 			while (matcher.find()) {
 				try {
 					highlighter.addHighlight(matcher.start(), matcher.end(), highlightColour);
+					foundCounter++;
 				} catch (IllegalStateException | BadLocationException exception) {
 					JOptionPane.showMessageDialog(this, "Unable to perform the find text feature....",
 							"Finding text failed!", JOptionPane.ERROR_MESSAGE);
 				}
 			}
+
+			labelCounter.setText(String.format("%d text found", foundCounter));
 		} else if (e.getSource() == clearHighlights) {
 			highlighter.removeAllHighlights();
 		}
