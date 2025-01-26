@@ -147,6 +147,12 @@ public class MainFrame extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == open) {
 			// Open the choose file dialog
+			if (locationPath == null || !locationPath.exists()) {
+				fileChooser.setCurrentDirectory(defafultLocation);
+			} else {
+				fileChooser.setCurrentDirectory(locationPath);
+			}
+
 			int fileChosen = fileChooser.showOpenDialog(this);
 
 			if (fileChosen == JFileChooser.APPROVE_OPTION) {
@@ -194,15 +200,11 @@ public class MainFrame extends JFrame implements ActionListener {
 			findText.setEnabled(false);
 			new FindText(textArea, findText);
 		} else if (e.getSource() == openLocation) {
-			// Change the fileChooser current directory back to default if locationPath doesn't exist
-			if (!locationPath.exists()) {
-				fileChooser.setCurrentDirectory(defafultLocation);
-			}
-
 			// Open file location
 			try {
 				desktop.open(locationPath);
-			} catch (IOException | NullPointerException | IllegalArgumentException | SecurityException openLocationException) {
+			} catch (IOException | NullPointerException | IllegalArgumentException
+					| SecurityException openLocationException) {
 				// Show a different dialog if a file isn't opened
 				if (locationPath != null) {
 					showCannotOpenLocationDialog(
