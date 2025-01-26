@@ -28,6 +28,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	// Default variables
 	String defaultTitle = "File reader";
 	Desktop desktop = Desktop.getDesktop();
+	JFileChooser fileChooser = new JFileChooser();
 
 	Font textFont = new Font("Monospaced", Font.PLAIN, 15);
 	float fontSize = (float) textFont.getSize();
@@ -58,6 +59,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	Boolean darkMode;
 
 	public MainFrame() {
+		fileChooser.setDialogTitle("Open file");
 		darkMode = false;
 
 		// Textbox/textfield
@@ -143,7 +145,6 @@ public class MainFrame extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == open) {
 			// Open the choose file dialog
-			JFileChooser fileChooser = new JFileChooser();
 			int fileChosen = fileChooser.showOpenDialog(this);
 
 			if (fileChosen == JFileChooser.APPROVE_OPTION) {
