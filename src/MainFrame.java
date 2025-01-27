@@ -217,12 +217,10 @@ public class MainFrame extends JFrame implements ActionListener {
 			}
 		} else if (e.getSource() == decreaseSize) {
 			// Decrease font size
-			fontSize--;
-			textArea.setFont(textFont.deriveFont(fontSize));
+			textArea.setFont(textFont.deriveFont(--fontSize));
 		} else if (e.getSource() == increaseSize) {
 			// Increase font size
-			fontSize++;
-			textArea.setFont(textFont.deriveFont(fontSize));
+			textArea.setFont(textFont.deriveFont(++fontSize));
 		} else if (e.getSource() == darkChoice) {
 			setTheme(darkBackgroundColour, darkTextBackgroundColour, whiteText);
 		} else if (e.getSource() == lightChoice) {
