@@ -1,6 +1,6 @@
 # File reader
 
-A GUI window that reads the contents/text of any file.
+A GUI window that reads the contents/text of any file. Including photos, videos, etc.
 
 ![File reader screenshot](https://github.com/user-attachments/assets/e7106214-7a22-4b05-8732-a68157f28bb8)
 
