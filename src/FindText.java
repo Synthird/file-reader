@@ -45,7 +45,7 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 
 		// TextField setup
 		textField = new JTextField();
-		textField.setFont(new Font("Monospaced", Font.PLAIN, 13));
+		textField.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 13));
 		textField.addActionListener(this);
 		this.add(textField);
 

@@ -31,7 +31,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	File defafultLocation = new File(System.getProperty("user.home"));
 	JFileChooser fileChooser = new JFileChooser();
 
-	Font textFont = new Font("Monospaced", Font.PLAIN, 15);
+	Font textFont = new Font(Font.MONOSPACED, Font.PLAIN, 15);
 	float fontSize = (float) textFont.getSize();
 
 	// Dark mode colours
