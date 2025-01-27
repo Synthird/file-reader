@@ -203,17 +203,12 @@ public class MainFrame extends JFrame implements ActionListener {
 			// Open file location
 			try {
 				desktop.open(locationPath);
-			} catch (IOException | NullPointerException | IllegalArgumentException
-					| SecurityException openLocationException) {
-				// Show a different dialog if a file isn't opened
-				if (locationPath != null) {
-					showCannotOpenLocationDialog(
-							"Cannot open file location! A folder has been deleted or renamed.....");
-				} else {
-					showCannotOpenLocationDialog("A file isn't opened.....");
-				}
+			} catch (IOException | IllegalArgumentException | SecurityException openLocationException) {
+				showCannotOpenLocationDialog("Cannot open file location! A folder has been deleted or renamed.....");
 			} catch (UnsupportedOperationException unsupportedOperationException) {
 				showCannotOpenLocationDialog("Opening a file location is not supported on this platform :(");
+			} catch (NullPointerException nullPointerException) {
+				showCannotOpenLocationDialog("A file isn't opened.....");
 			}
 		} else if (e.getSource() == decreaseSize) {
 			// Decrease font size
