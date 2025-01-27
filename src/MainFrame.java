@@ -38,13 +38,13 @@ public class MainFrame extends JFrame implements ActionListener {
 	Color darkBackgroundColour = new Color(30, 30, 30);
 	Color darkTextBackgroundColour = new Color(30, 30, 30);
 
-	Color whiteText = new Color(215, 215, 215);
+	Color darkModeText = new Color(215, 215, 215);
 
 	// Light mode colours
 	Color lightBackgroundColour = new Color(255, 255, 255);
 	Color lightTextBackgroundColour = new Color(255, 255, 255);
 
-	Color blackText = new Color(51, 51, 51);
+	Color lightModeText = new Color(51, 51, 51);
 
 	// Blank variables
 	FileReader fileReader;
@@ -217,9 +217,9 @@ public class MainFrame extends JFrame implements ActionListener {
 			// Increase font size
 			textArea.setFont(textFont.deriveFont(++fontSize));
 		} else if (e.getSource() == darkChoice) {
-			setTheme(darkBackgroundColour, darkTextBackgroundColour, whiteText);
+			setTheme(darkBackgroundColour, darkTextBackgroundColour, darkModeText);
 		} else if (e.getSource() == lightChoice) {
-			setTheme(lightBackgroundColour, lightTextBackgroundColour, blackText);
+			setTheme(lightBackgroundColour, lightTextBackgroundColour, lightModeText);
 		}
 	}
 
