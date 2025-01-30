@@ -146,13 +146,14 @@ public class MainFrame extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == open) {
-			// Open the choose file dialog
+			// Change the fileCHooser directory if needed
 			if (locationPath == null || !locationPath.exists()) {
 				fileChooser.setCurrentDirectory(defafultLocation);
 			} else {
 				fileChooser.setCurrentDirectory(locationPath);
 			}
 
+			// Open the choose file dialog
 			int fileChosen = fileChooser.showOpenDialog(this);
 
 			if (fileChosen == JFileChooser.APPROVE_OPTION) {
