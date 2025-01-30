@@ -134,7 +134,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		menuBar.add(themeMenu);
 
 		// Window setup
-		setWindowTitle(defaultTitle);
+		this.setTitle(defaultTitle);
 		this.setMinimumSize(new Dimension(600, 400));
 		this.setJMenuBar(menuBar);
 		this.getContentPane().setBackground(lightBackgroundColour);
@@ -167,7 +167,7 @@ public class MainFrame extends JFrame implements ActionListener {
 					locationPath = file.getParentFile();
 					fileChooser.setCurrentDirectory(locationPath);
 
-					setWindowTitle(String.format("%s (%s)", defaultTitle, filePath));
+					this.setTitle(String.format("%s (%s)", defaultTitle, filePath));
 				} catch (IOException | SecurityException | NullPointerException exception) {
 					showErrorDialog("This file cannot be read or found....", "Unable to read!");
 				} finally {
@@ -193,7 +193,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		} else if (e.getSource() == clearText) {
 			// Clear text
 			textArea.setText("");
-			setWindowTitle(defaultTitle);
+			this.setTitle(defaultTitle);
 			locationPath = null;
 		} else if (e.getSource() == findText) {
 			// Find text
@@ -234,10 +234,6 @@ public class MainFrame extends JFrame implements ActionListener {
 		textArea.setBackground(textBackgroundColour);
 		textArea.setForeground(textColour);
 		textArea.setCaretColor(textColour);
-	}
-
-	private void setWindowTitle(String text) {
-		this.setTitle(text);
 	}
 
 	private void showErrorDialog(String message, String title) {
