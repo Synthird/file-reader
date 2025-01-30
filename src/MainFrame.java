@@ -205,11 +205,11 @@ public class MainFrame extends JFrame implements ActionListener {
 			try {
 				desktop.open(locationPath);
 			} catch (IOException | IllegalArgumentException | SecurityException openLocationException) {
-				showCannotOpenLocationDialog("Cannot open file location! A folder has been deleted or renamed.....");
+				cannotOpenFileExplorer("Cannot open file location! A folder has been deleted or renamed.....");
 			} catch (UnsupportedOperationException unsupportedOperationException) {
-				showCannotOpenLocationDialog("Opening a file location is not supported on this platform :(");
+				cannotOpenFileExplorer("Opening a file location is not supported on this platform :(");
 			} catch (NullPointerException nullPointerException) {
-				showCannotOpenLocationDialog("A file isn't opened.....");
+				cannotOpenFileExplorer("A file isn't opened.....");
 			}
 		} else if (e.getSource() == decreaseSize) {
 			// Decrease font size
@@ -241,7 +241,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		JOptionPane.showMessageDialog(this, message, title, JOptionPane.ERROR_MESSAGE);
 	}
 
-	private void showCannotOpenLocationDialog(String message) {
+	private void cannotOpenFileExplorer(String message) {
 		showErrorDialog(message, "Unable to open file explorer!");
 	}
 }
