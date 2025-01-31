@@ -54,7 +54,6 @@ public class MainFrame extends JFrame implements ActionListener {
 	JScrollBar verticalScrollBar, horizontalScrollBar;
 	JTextArea textArea;
 
-	JMenuBar menuBar;
 	JMenuItem open, openLocation, findText, copyText, clearText, increaseSize, decreaseSize, darkChoice, lightChoice;
 
 	Boolean darkMode;
@@ -78,7 +77,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		this.add(scrollPane, BorderLayout.CENTER);
 
 		// Menubar
-		menuBar = new JMenuBar();
+		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBorder(BorderFactory.createEmptyBorder());
 		menuBar.setOpaque(false);
 
