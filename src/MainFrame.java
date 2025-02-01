@@ -182,7 +182,7 @@ public class MainFrame extends JFrame implements ActionListener {
 					charCounter.setText(String.format("| Characters: %d", textArea.getText().length()));
 					charCounter.setVisible(true);
 
-					this.setTitle(String.format("%s (%s)", defaultTitle,  filePath));
+					this.setTitle(String.format("%s (%s)", defaultTitle, filePath));
 				} catch (IOException | SecurityException | NullPointerException exception) {
 					showErrorDialog("This file cannot be read or found....", "Unable to read!");
 				} finally {
