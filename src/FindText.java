@@ -90,6 +90,8 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 				} catch (IllegalStateException | BadLocationException exception) {
 					JOptionPane.showMessageDialog(this, "Unable to perform the find text feature....",
 							"Finding text failed!", JOptionPane.ERROR_MESSAGE);
+					clearHighlightedText();
+					break;
 				}
 			}
 
