@@ -22,10 +22,10 @@ import javax.swing.text.Highlighter;
 
 public class FindText extends JFrame implements ActionListener, WindowListener {
 	// Default variables
-	DefaultHighlightPainter highlightColour = new DefaultHighlightPainter(Color.RED);
-
 	String defaultCounterText = "0 text found";
 	int foundCounter = 0;
+
+	DefaultHighlightPainter highlightColour = new DefaultHighlightPainter(Color.RED);
 
 	// Blank variables
 	JLabel labelCounter;
