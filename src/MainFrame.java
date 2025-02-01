@@ -16,6 +16,7 @@ import java.nio.charset.StandardCharsets;
 import javax.swing.BorderFactory;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -55,6 +56,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	JTextArea textArea;
 
 	JMenuItem open, openLocation, findText, copyText, clearText, increaseSize, decreaseSize, darkChoice, lightChoice;
+	JLabel charCounter;
 
 	Boolean darkMode;
 
@@ -132,6 +134,12 @@ public class MainFrame extends JFrame implements ActionListener {
 
 		menuBar.add(themeMenu);
 
+		// Character counter
+		charCounter = new JLabel();
+		charCounter.setVisible(false);
+		charCounter.setOpaque(false);
+		menuBar.add(charCounter, BorderLayout.EAST);
+
 		// Window setup
 		this.setTitle(defaultTitle);
 		this.setMinimumSize(new Dimension(600, 400));
@@ -167,7 +175,10 @@ public class MainFrame extends JFrame implements ActionListener {
 					locationPath = file.getParentFile();
 					fileChooser.setCurrentDirectory(locationPath);
 
-					this.setTitle(String.format("%s (%s)", defaultTitle, filePath));
+					charCounter.setText(String.format("| Characters: %d", textArea.getText().length()));
+					charCounter.setVisible(true);
+
+					this.setTitle(String.format("%s (%s)", defaultTitle,  filePath));
 				} catch (IOException | SecurityException | NullPointerException exception) {
 					showErrorDialog("This file cannot be read or found....", "Unable to read!");
 				} finally {
@@ -194,6 +205,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		} else if (e.getSource() == clearText) {
 			// Clear text
 			textArea.setText("");
+			charCounter.setVisible(false);
 			this.setTitle(defaultTitle);
 			locationPath = null;
 		} else if (e.getSource() == findText) {
