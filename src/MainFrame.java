@@ -80,7 +80,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		horizontalScrollBar = scrollPane.getHorizontalScrollBar();
 		scrollPane.setOpaque(false);
 		scrollPane.setBorder(BorderFactory.createEmptyBorder(3, 3, 0, 3));
-		this.add(scrollPane, BorderLayout.CENTER);
+		this.add(scrollPane);
 
 		// Menubar
 		JMenuBar menuBar = new JMenuBar();
