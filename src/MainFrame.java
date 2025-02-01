@@ -29,8 +29,10 @@ import javax.swing.JTextArea;
 public class MainFrame extends JFrame implements ActionListener {
 	// Default variables
 	String defaultTitle = "File reader";
+
 	Container contentPane = this.getContentPane();
 	Desktop desktop = Desktop.getDesktop();
+
 	File defafultLocation = new File(System.getProperty("user.home"));
 	JFileChooser fileChooser = new JFileChooser();
 
