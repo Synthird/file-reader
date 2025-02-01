@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
@@ -28,6 +29,7 @@ import javax.swing.JTextArea;
 public class MainFrame extends JFrame implements ActionListener {
 	// Default variables
 	String defaultTitle = "File reader";
+	Container contentPane = this.getContentPane();
 	Desktop desktop = Desktop.getDesktop();
 	File defafultLocation = new File(System.getProperty("user.home"));
 	JFileChooser fileChooser = new JFileChooser();
@@ -144,7 +146,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		this.setTitle(defaultTitle);
 		this.setMinimumSize(new Dimension(600, 400));
 		this.setJMenuBar(menuBar);
-		this.getContentPane().setBackground(lightBackgroundColour);
+		contentPane.setBackground(lightBackgroundColour);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
@@ -239,7 +241,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	// GUI setup
 
 	private void setTheme(Color backgroundColour, Color textBackgroundColour, Color textColour) {
-		this.getContentPane().setBackground(backgroundColour);
+		contentPane.setBackground(backgroundColour);
 		// Changing the scrollbar colours
 		verticalScrollBar.setBackground(backgroundColour);
 		horizontalScrollBar.setBackground(backgroundColour);
