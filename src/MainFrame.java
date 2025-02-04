@@ -214,7 +214,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		} else if (e.getSource() == findText) {
 			// Find text
 			findText.setEnabled(false);
-			new FindText(textArea, findText);
+			new FindText(textArea, findText, this);
 		} else if (e.getSource() == openLocation) {
 			// Open file location
 			try {

@@ -37,7 +37,7 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 	JMenuItem clickedButton;
 	JButton clearHighlights, findButton;
 
-	public FindText(JTextArea chosenTextArea, JMenuItem openFindGUI) {
+	public FindText(JTextArea chosenTextArea, JMenuItem openFindGUI, JFrame mainFrame) {
 		textArea = chosenTextArea;
 		clickedButton = openFindGUI;
 
@@ -67,7 +67,7 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 		// Window setup
 		this.setTitle("Find text (Case sensitive)");
 		this.setSize(324, 130);
-		this.setLocationRelativeTo(null);
+		this.setLocationRelativeTo(mainFrame);
 		this.setResizable(false);
 		this.addWindowListener(this);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
