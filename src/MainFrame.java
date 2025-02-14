@@ -140,7 +140,6 @@ public class MainFrame extends JFrame implements ActionListener {
 		// Character counter
 		charCounter = new JLabel();
 		charCounter.setVisible(false);
-		charCounter.setOpaque(false);
 		menuBar.add(charCounter);
 
 		// Window setup
