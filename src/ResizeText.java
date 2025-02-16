@@ -54,9 +54,9 @@ public class ResizeText extends JFrame implements ChangeListener, WindowListener
 
 		this.add(sizeLabelPanel, BorderLayout.NORTH);
 
-		this.setTitle("Change text size");
+		this.setTitle("Resize text");
 		this.pack();
-		this.setSize(this.getWidth() + 73, this.getHeight());
+		this.setSize(this.getWidth() + 40, this.getHeight());
 		this.setLocationRelativeTo(mainFrame);
 		this.setResizable(false);
 		this.addWindowListener(this);
