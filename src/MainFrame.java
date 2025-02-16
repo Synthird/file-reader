@@ -36,7 +36,6 @@ public class MainFrame extends JFrame implements ActionListener {
 	JFileChooser fileChooser = new JFileChooser();
 
 	Font textFont = new Font(Font.MONOSPACED, Font.PLAIN, 15);
-	float fontSize = (float) textFont.getSize();
 
 	// Dark mode colours
 	Color darkBackgroundColour = new Color(30, 30, 30);
@@ -58,7 +57,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	JScrollBar verticalScrollBar, horizontalScrollBar;
 	JTextArea textArea;
 
-	JMenuItem open, openLocation, findText, copyText, clearText, increaseSize, decreaseSize, darkChoice, lightChoice;
+	JMenuItem open, openLocation, findText, copyText, clearText, changeSize, darkChoice, lightChoice;
 	JLabel charCounter;
 
 	Boolean darkMode;
@@ -106,6 +105,10 @@ public class MainFrame extends JFrame implements ActionListener {
 		findText.addActionListener(this);
 		textMenu.add(findText);
 
+		changeSize = new JMenuItem("Change size");
+		changeSize.addActionListener(this);
+		textMenu.add(changeSize);
+
 		copyText = new JMenuItem("Copy");
 		copyText.addActionListener(this);
 		textMenu.add(copyText);
@@ -113,14 +116,6 @@ public class MainFrame extends JFrame implements ActionListener {
 		clearText = new JMenuItem("Clear");
 		clearText.addActionListener(this);
 		textMenu.add(clearText);
-
-		increaseSize = new JMenuItem("+ Increase size");
-		increaseSize.addActionListener(this);
-		textMenu.add(increaseSize);
-
-		decreaseSize = new JMenuItem("\u2014 Decrease size");
-		decreaseSize.addActionListener(this);
-		textMenu.add(decreaseSize);
 
 		menuBar.add(textMenu);
 
@@ -226,16 +221,12 @@ public class MainFrame extends JFrame implements ActionListener {
 			} catch (NullPointerException nullPointerException) {
 				cannotOpenFileExplorer("A file isn't opened.....");
 			}
-		} else if (e.getSource() == decreaseSize) {
-			// Decrease font size
-			textArea.setFont(textFont.deriveFont(--fontSize));
-		} else if (e.getSource() == increaseSize) {
-			// Increase font size
-			textArea.setFont(textFont.deriveFont(++fontSize));
 		} else if (e.getSource() == darkChoice) {
 			setTheme(darkBackgroundColour, darkTextBackgroundColour, darkModeText);
 		} else if (e.getSource() == lightChoice) {
 			setTheme(lightBackgroundColour, lightTextBackgroundColour, lightModeText);
+		} else if (e.getSource() == changeSize) {
+			new ResizeText(textArea, this, changeSize);
 		}
 	}
 
