@@ -24,7 +24,7 @@ public class ResizeText extends JFrame implements ChangeListener, WindowListener
 	JSlider slider;
 	JMenuItem sizeButton;
 
-	String textTemplate = "Size: %d";
+	String textTemplate = "Text size: %d";
 
 	public ResizeText(JTextArea textArea, JFrame mainFrame, JMenuItem sizeButton) {
 		sizeButton.setEnabled(false);
