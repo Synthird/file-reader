@@ -57,7 +57,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	JScrollBar verticalScrollBar, horizontalScrollBar;
 	JTextArea textArea;
 
-	JMenuItem open, openLocation, findText, copyText, clearText, changeSize, darkChoice, lightChoice;
+	JMenuItem open, openLocation, findText, copyText, clearText, Resize, darkChoice, lightChoice;
 	JLabel charCounter;
 
 	Boolean darkMode;
@@ -105,9 +105,9 @@ public class MainFrame extends JFrame implements ActionListener {
 		findText.addActionListener(this);
 		textMenu.add(findText);
 
-		changeSize = new JMenuItem("Resize");
-		changeSize.addActionListener(this);
-		textMenu.add(changeSize);
+		Resize = new JMenuItem("Resize");
+		Resize.addActionListener(this);
+		textMenu.add(Resize);
 
 		copyText = new JMenuItem("Copy");
 		copyText.addActionListener(this);
@@ -225,8 +225,8 @@ public class MainFrame extends JFrame implements ActionListener {
 			setTheme(darkBackgroundColour, darkTextBackgroundColour, darkModeText);
 		} else if (e.getSource() == lightChoice) {
 			setTheme(lightBackgroundColour, lightTextBackgroundColour, lightModeText);
-		} else if (e.getSource() == changeSize) {
-			new ResizeText(textArea, this, changeSize);
+		} else if (e.getSource() == Resize) {
+			new ResizeText(textArea, this, Resize);
 		}
 	}
 
