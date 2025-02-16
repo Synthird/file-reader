@@ -59,6 +59,7 @@ public class ResizeText extends JFrame implements ChangeListener, WindowListener
 		this.setSize(this.getWidth() + 73, this.getHeight());
 		this.setLocationRelativeTo(mainFrame);
 		this.setResizable(false);
+		this.addWindowListener(this);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(true);
 	}
