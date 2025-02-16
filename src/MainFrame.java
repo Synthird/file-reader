@@ -226,7 +226,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		} else if (e.getSource() == lightChoice) {
 			setTheme(lightBackgroundColour, lightTextBackgroundColour, lightModeText);
 		} else if (e.getSource() == resize) {
-			new resizeText(textArea, this, resize);
+			new ResizeText(textArea, this, resize);
 		}
 	}
 
