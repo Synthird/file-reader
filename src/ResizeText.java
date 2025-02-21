@@ -7,7 +7,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextArea;
 import javax.swing.event.ChangeEvent;
@@ -45,14 +44,10 @@ public class ResizeText extends JFrame implements ChangeListener, WindowListener
 		slider.addChangeListener(this);
 		this.add(slider);
 
-		JPanel sizeLabelPanel = new JPanel();
-		sizeLabelPanel.setOpaque(false);
-
 		sizeLabel = new JLabel(String.format(textTemplate, slider.getValue()));
+		sizeLabel.setHorizontalAlignment(JLabel.CENTER);
 		sizeLabel.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
-		sizeLabelPanel.add(sizeLabel);
-
-		this.add(sizeLabelPanel, BorderLayout.NORTH);
+		this.add(sizeLabel, BorderLayout.NORTH);
 
 		this.setTitle("Resize text");
 		this.pack();
