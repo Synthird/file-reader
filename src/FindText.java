@@ -51,10 +51,9 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 		this.add(textField);
 
 		// Counter setup
-		labelCounter = new JLabel(defaultCounterText);
+		labelCounter = new JLabel(defaultCounterText, JLabel.CENTER);
 		labelCounter.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
 		labelCounter.setOpaque(false);
-		labelCounter.setHorizontalAlignment(JLabel.CENTER);
 		this.add(labelCounter, BorderLayout.NORTH);
 
 		// Button setup

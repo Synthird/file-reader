@@ -44,8 +44,7 @@ public class ResizeText extends JFrame implements ChangeListener, WindowListener
 		slider.addChangeListener(this);
 		this.add(slider);
 
-		sizeLabel = new JLabel(String.format(textTemplate, slider.getValue()));
-		sizeLabel.setHorizontalAlignment(JLabel.CENTER);
+		sizeLabel = new JLabel(String.format(textTemplate, slider.getValue()), JLabel.CENTER);
 		sizeLabel.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
 		this.add(sizeLabel, BorderLayout.NORTH);
 
