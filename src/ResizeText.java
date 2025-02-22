@@ -50,6 +50,7 @@ public class ResizeText extends JFrame implements ChangeListener, WindowListener
 		sizeLabel.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
 		this.add(sizeLabel, BorderLayout.NORTH);
 
+		// Widnow setup
 		this.setTitle("Resize text");
 		this.pack();
 		this.setSize(this.getWidth() + 40, this.getHeight());
