@@ -34,6 +34,7 @@ public class ResizeText extends JFrame implements ChangeListener, WindowListener
 		this.textArea = textArea;
 		this.textFont = textArea.getFont();
 
+		// Slider
 		slider = new JSlider(0, 90, textFont.getSize());
 		slider.setPaintTicks(true);
 		slider.setMinorTickSpacing(5);
@@ -44,6 +45,7 @@ public class ResizeText extends JFrame implements ChangeListener, WindowListener
 		slider.addChangeListener(this);
 		this.add(slider);
 
+		// Text size label
 		sizeLabel = new JLabel(String.format(textTemplate, slider.getValue()), JLabel.CENTER);
 		sizeLabel.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
 		this.add(sizeLabel, BorderLayout.NORTH);
