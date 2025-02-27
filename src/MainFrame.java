@@ -25,6 +25,9 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import TextAreaManipulation.FindText;
+import TextAreaManipulation.ResizeText;
+
 public class MainFrame extends JFrame implements ActionListener {
 	// Default variables
 	String defaultTitle = "File reader";
