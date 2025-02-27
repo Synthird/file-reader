@@ -5,6 +5,7 @@ import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,6 +34,8 @@ public class MainFrame extends JFrame implements ActionListener {
 	String defaultTitle = "File reader";
 
 	Container contentPane = this.getContentPane();
+
+	Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 	Desktop desktop = Desktop.getDesktop();
 
 	File defafultLocation = new File(System.getProperty("user.home"));
@@ -200,7 +203,7 @@ public class MainFrame extends JFrame implements ActionListener {
 			}
 		} else if (e.getSource() == copyText) {
 			// Copy text
-			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(textArea.getText()), null);
+			clipboard.setContents(new StringSelection(textArea.getText()), null);
 			JOptionPane.showMessageDialog(this, "Text copied to clipboard!", "Text copied!",
 					JOptionPane.INFORMATION_MESSAGE);
 		} else if (e.getSource() == clearText) {
