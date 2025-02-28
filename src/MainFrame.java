@@ -26,8 +26,8 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import TextAreaManipulation.FindText;
-import TextAreaManipulation.ResizeText;
+import textareamanipulation.FindText;
+import textareamanipulation.ResizeText;
 
 public class MainFrame extends JFrame implements ActionListener {
 	// Default variables
