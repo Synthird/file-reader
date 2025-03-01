@@ -44,15 +44,11 @@ public class MainFrame extends JFrame implements ActionListener {
 	Font textFont = new Font(Font.MONOSPACED, Font.PLAIN, 15);
 
 	// Dark mode colours
-	Color darkBackgroundColour = new Color(30, 30, 30);
-	Color darkTextBackgroundColour = new Color(30, 30, 30);
-
+	Color darkBackgroundColour, darkTextBackgroundColour = new Color(30, 30, 30);
 	Color darkModeText = new Color(215, 215, 215);
 
 	// Light mode colours
-	Color lightBackgroundColour = new Color(255, 255, 255);
-	Color lightTextBackgroundColour = new Color(255, 255, 255);
-
+	Color lightBackgroundColour, lightTextBackgroundColour = new Color(255, 255, 255);
 	Color lightModeText = new Color(51, 51, 51);
 
 	// Blank variables
@@ -77,13 +73,14 @@ public class MainFrame extends JFrame implements ActionListener {
 		textArea = new JTextArea("Open a file to view its contents.");
 		textArea.setCursor(new Cursor(Cursor.TEXT_CURSOR));
 		textArea.setFont(textFont);
+		textArea.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
 		textArea.setEditable(false);
 
 		scrollPane = new JScrollPane(textArea);
 		verticalScrollBar = scrollPane.getVerticalScrollBar();
 		horizontalScrollBar = scrollPane.getHorizontalScrollBar();
 		scrollPane.setOpaque(false);
-		scrollPane.setBorder(BorderFactory.createEmptyBorder(3, 3, 0, 3));
+		scrollPane.setBorder(BorderFactory.createEmptyBorder());
 		this.add(scrollPane);
 
 		// Menubar
