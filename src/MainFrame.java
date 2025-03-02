@@ -44,11 +44,11 @@ public class MainFrame extends JFrame implements ActionListener {
 	Font textFont = new Font(Font.MONOSPACED, Font.PLAIN, 15);
 
 	// Dark mode colours
-	Color darkBackgroundColour, darkTextBackgroundColour = new Color(30, 30, 30);
+	Color darkBackgroundColour = new Color(30, 30, 30);
 	Color darkModeText = new Color(215, 215, 215);
 
 	// Light mode colours
-	Color lightBackgroundColour, lightTextBackgroundColour = new Color(255, 255, 255);
+	Color lightBackgroundColour = new Color(255, 255, 255);
 	Color lightModeText = new Color(51, 51, 51);
 
 	// Blank variables
@@ -225,9 +225,9 @@ public class MainFrame extends JFrame implements ActionListener {
 				cannotOpenFileExplorer("A file isn't opened.....");
 			}
 		} else if (e.getSource() == darkChoice) {
-			setTheme(darkBackgroundColour, darkTextBackgroundColour, darkModeText);
+			setTheme(darkBackgroundColour, darkModeText);
 		} else if (e.getSource() == lightChoice) {
-			setTheme(lightBackgroundColour, lightTextBackgroundColour, lightModeText);
+			setTheme(lightBackgroundColour, lightModeText);
 		} else if (e.getSource() == resize) {
 			new ResizeText(textArea, this, resize);
 		}
@@ -235,13 +235,15 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	// GUI setup
 
-	private void setTheme(Color backgroundColour, Color textBackgroundColour, Color textColour) {
+	private void setTheme(Color backgroundColour, Color textColour) {
 		contentPane.setBackground(backgroundColour);
 		// Changing the scrollbar colours
 		verticalScrollBar.setBackground(backgroundColour);
+		System.out.println(verticalScrollBar.getBackground());
 		horizontalScrollBar.setBackground(backgroundColour);
+		System.out.println(horizontalScrollBar.getBackground());
 		// Changing the textbox's colours
-		textArea.setBackground(textBackgroundColour);
+		textArea.setBackground(backgroundColour);
 		textArea.setForeground(textColour);
 		textArea.setCaretColor(textColour);
 	}
