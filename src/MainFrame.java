@@ -237,11 +237,11 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	private void setTheme(Color backgroundColour, Color textColour) {
 		contentPane.setBackground(backgroundColour);
+
 		// Changing the scrollbar colours
 		verticalScrollBar.setBackground(backgroundColour);
-		System.out.println(verticalScrollBar.getBackground());
 		horizontalScrollBar.setBackground(backgroundColour);
-		System.out.println(horizontalScrollBar.getBackground());
+
 		// Changing the textbox's colours
 		textArea.setBackground(backgroundColour);
 		textArea.setForeground(textColour);
