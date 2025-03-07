@@ -199,8 +199,10 @@ public class MainFrame extends JFrame implements ActionListener {
 				}
 			}
 		} else if (e.getSource() == copyText) {
+			String textSelected = textArea.getSelectedText() != null ? textArea.getSelectedText() : textArea.getText();
+
 			// Copy text
-			clipboard.setContents(new StringSelection(textArea.getText()), null);
+			clipboard.setContents(new StringSelection(textSelected), null);
 			JOptionPane.showMessageDialog(this, "Text copied to clipboard!", "Text copied!",
 					JOptionPane.INFORMATION_MESSAGE);
 		} else if (e.getSource() == clearText) {
