@@ -220,7 +220,7 @@ public class MainFrame extends JFrame implements ActionListener {
 			} catch (IOException | IllegalArgumentException | SecurityException openLocationException) {
 				cannotOpenFileExplorer("Cannot open file location! A folder has been deleted or renamed.....");
 			} catch (UnsupportedOperationException unsupportedOperationException) {
-				cannotOpenFileExplorer("Opening a file location is not supported on this platform :(");
+				cannotOpenFileExplorer("Opening a file location isn't supported on this device :(");
 			} catch (NullPointerException nullPointerException) {
 				cannotOpenFileExplorer("A file isn't opened.....");
 			}
