@@ -24,7 +24,7 @@ import javax.swing.text.Highlighter;
 
 public class FindText extends JFrame implements ActionListener, WindowListener {
 	// Default variables
-	String textTemplate = "%d text found";
+	String textTemplate = "%d found";
 	int foundCounter = 0;
 	String defaultCounterText = String.format(textTemplate, foundCounter);
 
