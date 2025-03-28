@@ -2,7 +2,7 @@
 
 A GUI app that reads the contents/text of any file. Including photos, videos, audio, etc.
 
-![File reader screenshot](https://github.com/user-attachments/assets/e7106214-7a22-4b05-8732-a68157f28bb8)
+![File reader GUI window screenshot](https://github.com/user-attachments/assets/e7106214-7a22-4b05-8732-a68157f28bb8)
 
 ## Download/Installation
 
