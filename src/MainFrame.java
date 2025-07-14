@@ -43,13 +43,8 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	Font textFont = new Font(Font.MONOSPACED, Font.PLAIN, 15);
 
-	// Dark mode colours
-	Color darkBackgroundColour = new Color(30, 30, 30);
-	Color darkModeText = new Color(215, 215, 215);
-
-	// Light mode colours
-	Color lightBackgroundColour = new Color(255, 255, 255);
-	Color lightModeText = new Color(51, 51, 51);
+	Color darkBackgroundColour = new Color(30, 30, 30), darkModeText = new Color(215, 215, 215),
+			lightBackgroundColour = new Color(255, 255, 255), lightModeText = new Color(51, 51, 51);
 
 	// Blank variables
 	FileReader fileReader;
