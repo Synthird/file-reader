@@ -78,7 +78,8 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == textField || e.getSource() == findButton) {
+		Object source = e.getSource();
+		if (source == textField || source == findButton) {
 			// Highlight text to be looked for
 			Pattern pattern = Pattern.compile(textField.getText());
 			Matcher matcher = pattern.matcher(textArea.getText());
@@ -98,7 +99,7 @@ public class FindText extends JFrame implements ActionListener, WindowListener {
 			}
 
 			labelCounter.setText(String.format(textTemplate, foundCounter));
-		} else if (e.getSource() == clearHighlights) {
+		} else if (source == clearHighlights) {
 			clearHighlightedText();
 		}
 	}

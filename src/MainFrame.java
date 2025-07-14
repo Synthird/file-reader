@@ -148,7 +148,9 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == open) {
+		Object source = e.getSource();
+
+		if (source == open) {
 			// Change the fileChooser directory if needed
 			if (locationPath == null || !locationPath.exists()) {
 				fileChooser.setCurrentDirectory(defafultLocation);
@@ -193,24 +195,24 @@ public class MainFrame extends JFrame implements ActionListener {
 					}
 				}
 			}
-		} else if (e.getSource() == copyText) {
+		} else if (source == copyText) {
 			String textSelected = textArea.getSelectedText() != null ? textArea.getSelectedText() : textArea.getText();
 
 			// Copy text
 			clipboard.setContents(new StringSelection(textSelected), null);
 			JOptionPane.showMessageDialog(this, "Text copied to clipboard!", "Text copied!",
 					JOptionPane.INFORMATION_MESSAGE);
-		} else if (e.getSource() == clearText) {
+		} else if (source == clearText) {
 			// Clear text
 			textArea.setText("");
 			charCounter.setVisible(false);
 			this.setTitle(defaultTitle);
 			locationPath = null;
-		} else if (e.getSource() == findText) {
+		} else if (source == findText) {
 			// Find text
 			findText.setEnabled(false);
 			new FindText(textArea, findText, this);
-		} else if (e.getSource() == openLocation) {
+		} else if (source == openLocation) {
 			// Open file location
 			try {
 				desktop.open(locationPath);
@@ -221,11 +223,11 @@ public class MainFrame extends JFrame implements ActionListener {
 			} catch (NullPointerException nullPointerException) {
 				cannotOpenFileExplorer("A file isn't opened.....");
 			}
-		} else if (e.getSource() == darkChoice) {
+		} else if (source == darkChoice) {
 			setTheme(darkBackgroundColour, darkModeText);
-		} else if (e.getSource() == lightChoice) {
+		} else if (source == lightChoice) {
 			setTheme(lightBackgroundColour, lightModeText);
-		} else if (e.getSource() == resize) {
+		} else if (source == resize) {
 			new ResizeText(textArea, this, resize);
 		}
 	}
