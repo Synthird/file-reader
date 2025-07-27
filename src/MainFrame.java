@@ -120,11 +120,11 @@ public class MainFrame extends JFrame implements ActionListener {
 		// Theme menu
 		JMenu themeMenu = new JMenu("Theme");
 
-		darkChoice = new JMenuItem("\u263d Dark");
+		darkChoice = new JMenuItem("Dark");
 		darkChoice.addActionListener(this);
 		themeMenu.add(darkChoice);
 
-		lightChoice = new JMenuItem("\u263c Light");
+		lightChoice = new JMenuItem("Light");
 		lightChoice.addActionListener(this);
 		themeMenu.add(lightChoice);
 
