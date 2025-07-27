@@ -57,7 +57,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	JMenuItem open, openLocation, findText, copyText, clearText, resize, darkChoice, lightChoice;
 	JLabel charCounter;
 
-	Boolean darkMode;
+	boolean darkMode;
 
 	public MainFrame() {
 		fileChooser.setDialogTitle("Open file");
