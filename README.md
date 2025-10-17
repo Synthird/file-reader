@@ -18,7 +18,7 @@ This is not a virus, so it is safe to install.
 
 ### Opening the jar file (Any operating system)
 
-You need an openJDK installed on your device to open the jar file. Here are a couple ones to choose:
+You need a JDK installed on your device to open the jar file. Here are a couple ones to choose:
 
 - [Amazon Correto](https://aws.amazon.com/corretto/)
 - [Azul Zulu](https://www.azul.com/downloads/?package=jdk#zulu)
@@ -30,7 +30,7 @@ You need an openJDK installed on your device to open the jar file. Here are a co
 - [Red Hat's openJDK](https://developers.redhat.com/products/openjdk/download)
 - [SapMachine](https://sap.github.io/SapMachine/)
 
-Once you installed an openJDK, download the jar file and open it.
+Once you installed a JDK, download the jar file and open it.
 
 ## License
 
