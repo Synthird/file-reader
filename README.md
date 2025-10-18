@@ -22,7 +22,7 @@ You need a JDK installed on your device to open the jar file. Here are a couple 
 
 - [Amazon Correto](https://aws.amazon.com/corretto/)
 - [Azul Zulu](https://www.azul.com/downloads/?package=jdk#zulu)
-- [Eclipse Adoptium](https://adoptium.net/)
+- [Eclipse Adoptium Temurin](https://adoptium.net/)
 - [IBM Semeru Runtimes](https://developer.ibm.com/languages/java/semeru-runtimes/)
 - [Microsoft's openJDK](https://www.microsoft.com/openjdk)
 - [Oracle GraalVM](https://www.graalvm.org/downloads/)
