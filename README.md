@@ -38,4 +38,4 @@ This repository contains the MIT license. You must give credit if you are going 
 
 ## Archival
 
-This repository is no longer being maintained. You still must give credit even if it is archived.
+This repository is no longer being maintained due to maintenance burden. You still must give credit even if it is archived.
